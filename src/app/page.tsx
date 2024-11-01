@@ -1,11 +1,13 @@
-"use client";
+
 import Image from "next/image";
 import Header from "@/containers/header";
 import Footer from "@/containers/footer";
 import DataCard from "@/components/DataCard";
 import mainIcon from "../public/home-page-icon.png";
+import { getCareers } from "../../_actions/careerOverviewAction";
 
-const Home = () => {
+const Home = async () => {
+  const { data, errMsg } = await getCareers();
   return (
     <div
       className="p-3"
@@ -34,19 +36,11 @@ const Home = () => {
           </div>
         </div>
         <div className="bg-zinc-5 rounded border-2 border-gray-500  p-4 flex flex-wrap gap-x-7 gap-y-4 mb-">
-          <DataCard />
-
-          <DataCard />
-
-          <DataCard />
-
-          <DataCard />
-
-          <DataCard />
-
-          <DataCard />
-
-          <DataCard />
+        {
+          data.map(item => (
+            <DataCard name={item.name} description={item.description} />
+          ))
+        }
         </div>
       </div>
       <Footer />
