@@ -1,0 +1,103 @@
+"use client";
+import { ReactFlow, Controls, Background } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+import { useRouter } from "next/navigation";
+
+const edges = [
+  { id: "1-2", source: "1", target: "2", type: "bezier" },
+  { id: "2-3", source: "2", target: "3", type: "bezier" },
+  { id: "3-4", source: "3", target: "4", type: "bezier" },
+  { id: "3-5", source: "3", target: "5", type: "bezier" },
+  { id: "3-6", source: "3", target: "6", type: "bezier" },
+  { id: "3-7", source: "3", target: "7", type: "bezier" },
+];
+
+const nodes = [
+  {
+    id: "1",
+    data: { label: "10th Class" },
+    position: { x: 100, y: 0 },
+    type: "input",
+    style: { cursor: "pointer" },
+  },
+  {
+    id: "2",
+    data: { label: "Intermediate" },
+    position: { x: 100, y: 100 },
+    style: { cursor: "pointer" },
+  },
+  {
+    id: "3",
+    data: { label: "Engineering" },
+    position: { x: 100, y: 200 },
+    style: { cursor: "pointer" },
+  },
+  {
+    id: "4",
+    data: { label: "Software Engineering" },
+    position: { x: -100, y: 300 },
+    style: { cursor: "pointer" },
+  },
+  {
+    id: "5",
+    data: { label: "Electrical Engineering" },
+    position: { x: 100, y: 300 },
+    style: { cursor: "pointer" },
+  },
+  {
+    id: "6",
+    data: { label: "Mechanical Engineering" },
+    position: { x: 300, y: 300 },
+    style: { cursor: "pointer" },
+  },
+  {
+    id: "7",
+    data: { label: "Civil Engineering" },
+    position: { x: 500, y: 300 },
+    style: { cursor: "pointer" },
+  },
+];
+
+function Flow() {
+  const router = useRouter();
+
+  const handleNodeClick = (event, node) => {
+    // Navigate based on the node ID
+    if (node.id === "1") {
+      router.push("/engineering");
+    } else if (node.id === "2") {
+      router.push("/engineering/intermediate");
+    } else if (node.id === "3") {
+      router.push("/engineering/btech");
+    }
+  };
+
+  return (
+    <div
+      style={{ height: "50vh" }}
+      className="rounded border-2 border-gray-600 m-2"
+    >
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodeClick={handleNodeClick}
+        panOnDrag={false} // Disable dragging (panning) the chart
+        panOnScroll={false} // Disable panning on scroll
+        zoomOnScroll={false} // Disable zooming on scroll
+        zoomOnPinch={false} // Disable zooming on pinch
+        zoomOnDoubleClick={false} // Disable zooming on double-click
+        elementsSelectable={false} // Prevent element selection
+        fitView // Automatically center and scale to fit the view
+        fitViewOptions={{
+          padding: 0.2,
+        }}
+        proOptions={{ hideAttribution: true }}
+      >
+        {/* <Background /> */}
+        {/* <Controls /> */}
+      </ReactFlow>
+    </div>
+  );
+}
+
+export default Flow;
