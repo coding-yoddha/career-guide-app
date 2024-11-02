@@ -1,7 +1,7 @@
 "use server";
 
-import CareerOverview from "../../models/careerOverview";
 import connectDB from "../../config/database";
+import CareerOverview from "@/models/careerOverview";
 import engineeringIcon from "../public/developer.png";
 
 const careerOptions = [
@@ -11,7 +11,7 @@ const careerOptions = [
     image: engineeringIcon,
     description:
       "Engineering applies science and math to design and build solutions that improve life, from structures and machines to technology and medical devices.",
-    redirectPageName: "engineering",
+    redirectPageName: "engineer-options",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const careerOptions = [
     image: engineeringIcon,
     description:
       "Medicine is the science and practice of diagnosing, treating, and preventing illness to help people stay healthy. It includes everything from using drugs and surgeries to lifestyle advice and therapies to improve health and well-being.",
-    redirectPageName: "medicine",
+    redirectPageName: "medicine-options",
   },
   {
     id: 3,
@@ -74,10 +74,7 @@ const careerOptions = [
 export async function getCareers() {
   try {
     await connectDB();
-    // const data = JSON.parse(JSON.stringify(await CareerOverview.find()));
-    // console.log(data);
-    const data = careerOptions;
-
+    const data = JSON.parse(JSON.stringify(await CareerOverview.find()));
     return { data };
   } catch (error) {
     return { errMsg: error.message };

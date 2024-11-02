@@ -1,4 +1,6 @@
 "use client";
+
+import { useEffect, useState } from "react";
 import { ReactFlow, Controls, Background } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { useRouter } from "next/navigation";
@@ -18,48 +20,100 @@ const nodes = [
     data: { label: "10th Class" },
     position: { x: 100, y: 0 },
     type: "input",
-    style: { cursor: "pointer" },
+    style: {
+      backgroundColor: "#ffcccb",
+      color: "#333",
+      border: "2px solid #ff7f7f",
+      cursor: "pointer",
+    },
   },
   {
     id: "2",
     data: { label: "Intermediate" },
     position: { x: 100, y: 100 },
-    style: { cursor: "pointer" },
+    style: {
+      backgroundColor: "#add8e6",
+      color: "#333",
+      border: "2px solid #007bff",
+      cursor: "pointer",
+    },
   },
   {
     id: "3",
     data: { label: "Engineering" },
     position: { x: 100, y: 200 },
-    style: { cursor: "pointer" },
+    style: {
+      backgroundColor: "#d3ffd3",
+      color: "#333",
+      border: "2px solid #28a745",
+      cursor: "pointer",
+    },
   },
   {
     id: "4",
     data: { label: "Software Engineering" },
     position: { x: -100, y: 300 },
-    style: { cursor: "pointer" },
+    style: {
+      backgroundColor: "#ffe4b5",
+      color: "#333",
+      border: "2px solid #ffa500",
+      cursor: "pointer",
+    },
   },
   {
     id: "5",
     data: { label: "Electrical Engineering" },
     position: { x: 100, y: 300 },
-    style: { cursor: "pointer" },
+    style: {
+      backgroundColor: "#f0e68c",
+      color: "#333",
+      border: "2px solid #ffd700",
+      cursor: "pointer",
+    },
   },
   {
     id: "6",
     data: { label: "Mechanical Engineering" },
     position: { x: 300, y: 300 },
-    style: { cursor: "pointer" },
+    style: {
+      backgroundColor: "#b0c4de",
+      color: "#333",
+      border: "2px solid #4682b4",
+      cursor: "pointer",
+    },
   },
   {
     id: "7",
     data: { label: "Civil Engineering" },
     position: { x: 500, y: 300 },
-    style: { cursor: "pointer" },
+    style: {
+      backgroundColor: "#ffdab9",
+      color: "#333",
+      border: "2px solid #cd853f",
+      cursor: "pointer",
+    },
   },
 ];
 
 function Flow() {
+  const [flowData, setFlowData] = useState({
+    nodes: [],
+    edges: [],
+  });
   const router = useRouter();
+  useEffect(() => {
+    fetch(
+      `http://localhost:3000/api/getFlows?start=${"10th"}&end=${"Electrical Engineering"}`,
+      { method: "GET" }
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log("data", data);
+        setFlowData(data?.data);
+      });
+  }, []);
 
   const handleNodeClick = (event, node) => {
     // Navigate based on the node ID
@@ -78,8 +132,8 @@ function Flow() {
       className="rounded border-2 border-gray-600 m-2"
     >
       <ReactFlow
-        nodes={nodes}
-        edges={edges}
+        nodes={flowData?.nodes}
+        edges={flowData?.edges}
         onNodeClick={handleNodeClick}
         panOnDrag={false} // Disable dragging (panning) the chart
         panOnScroll={false} // Disable panning on scroll

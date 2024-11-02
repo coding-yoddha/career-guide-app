@@ -1,20 +1,14 @@
 import Image from "next/image";
 import Footer from "@/containers/footer";
 import DataCard from "@/components/DataCard";
-import mainIcon from "../public/home-page-icon.png";
+import mainIcon from "../public/main-logo-1.png";
 import { getCareers } from "../actions/careerOverviewAction";
 
 const Home = async () => {
   const { data, errMsg } = await getCareers();
   return (
-    <div
-      className="p-3"
-      style={{
-        background:
-          "linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(220,245,255,1) 0%, rgba(255,255,255,1) 38%, rgba(254,254,254,1) 100%)",
-      }}
-    >
-      <div className="flex flex-col">
+    <div className="p-3">
+      <div className="flex flex-col" style={{ marginTop: "72px" }}>
         <div
           style={{
             display: "flex",

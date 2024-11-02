@@ -5,12 +5,12 @@ const Footer = () => {
         <div className="flex flex-wrap">
           <div className="w-full md:w-1/2 lg:w-1/4 px-4 mb-8 md:mb-0">
             <h4 className="text-white text-lg font-medium mb-8 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:bg-pink-500 after:h-0.5 after:w-12">
-              Next Move
+              Agla Kadam
             </h4>
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#"
+                  href="/about"
                   className="text-gray-400 hover:text-white transition-all ease-in-out duration-300"
                 >
                   About us
