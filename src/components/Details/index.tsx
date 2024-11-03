@@ -1,6 +1,20 @@
 import Link from "next/link";
 
-const Details = ({
+// Define the types for the component props
+interface Resource {
+  resourceName: string;
+  resourceLink: string;
+}
+
+interface DetailsProps {
+  title: string;
+  titleDescription: string;
+  focusSubjects: string[];
+  additionalInformation: string;
+  resources: Resource[];
+}
+
+const Details: React.FC<DetailsProps> = ({
   title,
   titleDescription,
   focusSubjects,
@@ -22,9 +36,9 @@ const Details = ({
             Core Subjects
           </h2>
           <ul className="list-disc list-inside text-gray-600 space-y-2">
-            {focusSubjects?.map((subject) => {
-              return <li>{subject}</li>;
-            })}
+            {focusSubjects?.map((subject, index) => (
+              <li key={index}>{subject}</li>
+            ))}
           </ul>
         </section>
 
@@ -40,21 +54,22 @@ const Details = ({
         <section className="bg-white shadow-lg rounded-lg p-8">
           <h4 className="text-2xl font-bold text-blue-700 mb-4">Heading 4</h4>
           <div className="space-y-2">
-            {resources?.map((resource) => {
-              return (
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-700 font-medium">
-                    {resource.resourceName}
-                  </span>
-                  <Link
-                    href={resource.resourceLink}
-                    className="text-blue-500 hover:underline"
-                  >
-                    Visit Link
-                  </Link>
-                </div>
-              );
-            })}
+            {resources?.map((resource, index) => (
+              <div
+                key={index}
+                className="flex justify-between items-center"
+              >
+                <span className="text-gray-700 font-medium">
+                  {resource.resourceName}
+                </span>
+                <Link
+                  href={resource.resourceLink}
+                  className="text-blue-500 hover:underline"
+                >
+                  Visit Link
+                </Link>
+              </div>
+            ))}
           </div>
         </section>
       </div>
