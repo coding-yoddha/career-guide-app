@@ -3,7 +3,10 @@ import goingUpIcon from "../../public/going-up.png";
 
 const AboutUs = () => {
   return (
-    <div className="bg-gray-50 min-h-screen flex  justify-center py-12 px-6 lg:px-8">
+    <div
+      className="bg-gray-50 min-h-screen flex  justify-center py-12 px-6 lg:px-8 w-full"
+      style={{ marginTop: "3%" }}
+    >
       <div className="max-w-2xl  p-8">
         <h2 className="text-3xl font-bold text-center text-blue-600">
           About Us

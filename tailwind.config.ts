@@ -60,6 +60,15 @@ const config: Config = {
       width: {
         "30": "30%",
       },
+      animation: {
+        spooky: "spooky 2s alternate infinite linear",
+      },
+      keyframes: {
+        spooky: {
+          "0%": { transform: "translateY(.15em) scaleY(.95)" },
+          "100%": { transform: "translateY(-.15em)" },
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

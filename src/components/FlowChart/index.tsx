@@ -127,29 +127,26 @@ function Flow() {
   };
 
   return (
-    <div
-      style={{ height: "50vh" }}
-      className="rounded border-2 border-gray-600 m-2"
-    >
-      <ReactFlow
-        nodes={flowData?.nodes}
-        edges={flowData?.edges}
-        onNodeClick={handleNodeClick}
-        panOnDrag={false} // Disable dragging (panning) the chart
-        panOnScroll={false} // Disable panning on scroll
-        zoomOnScroll={false} // Disable zooming on scroll
-        zoomOnPinch={false} // Disable zooming on pinch
-        zoomOnDoubleClick={false} // Disable zooming on double-click
-        elementsSelectable={false} // Prevent element selection
-        fitView // Automatically center and scale to fit the view
-        fitViewOptions={{
-          padding: 0.2,
-        }}
-        proOptions={{ hideAttribution: true }}
-      >
-        {/* <Background /> */}
-        {/* <Controls /> */}
-      </ReactFlow>
+    <div className="flex  justify-center min-h-screen">
+      <div className="w-3/4 h-[50vh] flex flex-col items-center border-2 border-gray-600 rounded m-2">
+        <ReactFlow
+          nodes={flowData.nodes}
+          edges={flowData.edges}
+          onNodeClick={handleNodeClick}
+          style={{ height: "100%", width: "100%" }} // Full height and width on ReactFlow
+          panOnDrag={false}
+          panOnScroll={false}
+          zoomOnScroll={false}
+          zoomOnPinch={false}
+          zoomOnDoubleClick={false}
+          elementsSelectable={false}
+          fitView
+          fitViewOptions={{
+            padding: 0.2,
+          }}
+          proOptions={{ hideAttribution: true }}
+        />
+      </div>
     </div>
   );
 }

@@ -7,8 +7,8 @@ import { getCareers } from "../actions/careerOverviewAction";
 const Home = async () => {
   const { data, errMsg } = await getCareers();
   return (
-    <div className="p-3">
-      <div className="flex flex-col" style={{ marginTop: "72px" }}>
+    <div className="p-3 w-full" style={{ marginTop: "5%" }}>
+      <div className="flex flex-col">
         <div
           style={{
             display: "flex",

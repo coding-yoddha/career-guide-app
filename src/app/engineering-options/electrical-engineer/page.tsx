@@ -2,7 +2,7 @@ import Flow from "@/components/FlowChart";
 
 const ElectricalEngineerDetails = () => {
   return (
-    <div style={{ marginTop: "200px" }}>
+    <div style={{ marginTop: "7%" }}>
       <Flow />
     </div>
   );

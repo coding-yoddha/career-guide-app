@@ -37,7 +37,7 @@ const Footer = () => {
                   href="#"
                   className="text-gray-400 hover:text-white transition-all ease-in-out duration-300"
                 >
-                  Email: nextmove@gmail.com
+                  Email: team.aglakadam@gmail.com
                 </a>
               </li>
             </ul>

@@ -6,17 +6,29 @@ function convertPathsToNodes(paths) {
   const uniqueNodes = new Map();
   const edges = [];
   let idCounter = 1;
-  const yOffset = 100;
-  const xOffset = 200;
+  const yOffset = 100; // Distance between levels on the y-axis
+  const xOffsetBase = 200; // Base distance for x-axis spacing
 
-  for (var path of paths) {
-    for (var index in path) {
+  // Keep track of node positions at each level
+  const levelPositions = new Map();
+
+  for (const path of paths) {
+    for (let index = 0; index < path.length; index++) {
       const node = path[index];
+
+      // Calculate the x-axis position dynamically
       if (!uniqueNodes.has(node)) {
+        // If the level doesn't exist in levelPositions, initialize it
+        if (!levelPositions.has(index)) {
+          levelPositions.set(index, 0);
+        }
+
+        // Set the x-axis position based on the number of nodes at this level
+        const currentXOffset = levelPositions.get(index) * xOffsetBase;
         uniqueNodes.set(node, {
           id: idCounter.toString(),
           data: { label: node },
-          position: { x: xOffset, y: index * yOffset },
+          position: { x: currentXOffset, y: index * yOffset },
           type: index === 0 ? "input" : "default",
           style: {
             backgroundColor: "#ffcccb",
@@ -25,25 +37,24 @@ function convertPathsToNodes(paths) {
             cursor: "pointer",
           },
         });
+
+        // Increment the counter for the current level and the ID counter
+        levelPositions.set(index, levelPositions.get(index) + 1);
         idCounter++;
       }
     }
   }
 
-  for (var path of paths) {
-    for (var index in path) {
-      const node = path[index];
-
-      if (index < path.length - 1) {
-        const sourceId = uniqueNodes.get(node).id;
-        const targetId = uniqueNodes.get(path[Number(index) + 1]).id;
-        edges.push({
-          id: `${sourceId}-${targetId}`,
-          source: sourceId,
-          target: targetId,
-          type: "bezier",
-        });
-      }
+  for (const path of paths) {
+    for (let index = 0; index < path.length - 1; index++) {
+      const sourceId = uniqueNodes.get(path[index]).id;
+      const targetId = uniqueNodes.get(path[index + 1]).id;
+      edges.push({
+        id: `${sourceId}-${targetId}`,
+        source: sourceId,
+        target: targetId,
+        type: "bezier",
+      });
     }
   }
 

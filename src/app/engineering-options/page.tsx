@@ -3,11 +3,7 @@ import OptionsDetails from "@/components/OptionsDetails";
 import React from "react";
 
 const EngineeringDetails = () => {
-  return (
-    <div>
-      <OptionsDetails />
-    </div>
-  );
+  return <OptionsDetails />;
 };
 
 export default EngineeringDetails;
