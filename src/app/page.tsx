@@ -4,14 +4,14 @@ import DataCard from "@/components/DataCard";
 import mainIcon from "../public/main-logo-1.png";
 import { getCareers } from "../actions/careerOverviewAction";
 
-// Define the type for the career option object, matching the Mongoose schema
+// Define the type for the career option object
 interface CareerOption {
   _id: string;
   name: string;
   description: string;
   redirectPageName: string;
   image?: {
-    data: string; // Base64 encoded string for client-side use
+    data: string; // Base64 encoded string
     contentType: string;
   };
 }
@@ -33,17 +33,6 @@ const Home: React.FC = async () => {
     );
   }
 
-  // Ensure image Buffer is converted to Base64 string
-  const formattedData = data?.map((career) => ({
-    ...career,
-    image: career.image
-      ? {
-          ...career.image,
-          data: Buffer.from(career.image.data).toString('base64'),
-        }
-      : undefined,
-  }));
-
   return (
     <div className="p-3 w-full" style={{ marginTop: "5%" }}>
       <div className="flex flex-col">
@@ -63,7 +52,7 @@ const Home: React.FC = async () => {
           </div>
         </div>
         <div className="bg-zinc-5 rounded border-2 border-gray-500 p-4 flex flex-wrap gap-x-7 gap-y-4 mb-3 justify-items-start">
-          {formattedData?.map((careerOption: CareerOption) => {
+          {data?.map((careerOption: CareerOption) => {
             return (
               <DataCard careerOption={careerOption} key={careerOption._id} />
             );

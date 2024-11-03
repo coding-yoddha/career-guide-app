@@ -7,20 +7,22 @@ import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 
 // Define the type for the careerOption prop
-interface CareerOption {
-  _id: string;
-  name: string;
-  description: string;
-  redirectPageName: string;
-  image?: {
-    data: string; // Base64 encoded string
-    contentType: string;
+interface DataCardProps {
+  careerOption: {
+    _id: string;
+    name: string;
+    description: string;
+    redirectPageName: string;
+    image?: {
+      data: string; // Base64 encoded string
+      contentType: string;
+    };
   };
 }
 
-interface DataCardProps {
-  careerOption: CareerOption;
-}
+// interface DataCardProps {
+//   careerOption: CareerOption;
+// }
 
 const DataCard: React.FC<DataCardProps> = ({ careerOption }) => {
   const router = useRouter();
