@@ -21,22 +21,21 @@ export async function getCareers() {
     //   });
     //   await newImage.save();
     //   console.log("saved successfully");
-    const careers = await CareerOverview.find().lean();
+    const careers = await CareerOverview.find().lean(); // Fetch plain JavaScript objects
 
-    // Ensure each field matches the defined interface and handle optional fields
-    const formattedCareers = careers.map((career) => ({
-      _id: career._id.toString(), // Convert _id to a string
-      name: career.name,
-      description: career.description,
-      redirectPageName: career.redirectPageName,
-      image: career.image
-        ? {
-            data: career.image.data.toString('base64'), // Convert Buffer to Base64 if present
-            contentType: career.image.contentType,
-          }
-        : undefined, // If image is not present, set it as undefined
-    }));
-    console.log(formattedCareers);
+      // Convert Buffer to Base64 strings for image display
+      const formattedCareers = careers.map((career) => ({
+        _id: career._id.toString(), // Convert _id to a string
+        name: career.name,
+        description: career.description,
+        redirectPageName: career.redirectPageName,
+        image: career.image
+          ? {
+              data: career.image.data.toString('base64'), // Convert Buffer to Base64 if present
+              contentType: career.image.contentType,
+            }
+          : undefined, // If image is not present, set it as undefined
+      }));
     return { data: formattedCareers };
   } catch (error) {
     console.log("error: ", error);
