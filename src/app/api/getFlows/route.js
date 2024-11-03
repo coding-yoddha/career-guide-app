@@ -1,6 +1,7 @@
 import connectToDB from "../../../../config/database";
 import { NextResponse } from "next/server";
 import AcademicsMap from "../../../models/academicsMap";
+export const dynamic = "force-dynamic"; // Ensure dynamic rendering
 
 function convertPathsToNodes(paths) {
   const uniqueNodes = new Map();
