@@ -1,6 +1,7 @@
 import connectToDB from "../../../../config/database";
 import { NextResponse } from "next/server";
 import CareerOption from "../../../models/careerOption";
+export const dynamic = "force-dynamic"; // Ensure dynamic rendering
 
 export async function GET(req) {
   try {
