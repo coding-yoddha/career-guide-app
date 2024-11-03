@@ -8,11 +8,14 @@ import { Button } from "../ui/button";
 
 // Define the type for the careerOption prop
 interface CareerOption {
-  id: string,
+  _id: string;
   name: string;
-  image: string;
   description: string;
-  redirectPageName?: string;
+  redirectPageName: string;
+  image?: {
+    data: string; // Base64 encoded string
+    contentType: string;
+  };
 }
 
 interface DataCardProps {
@@ -47,8 +50,8 @@ const DataCard: React.FC<DataCardProps> = ({ careerOption }) => {
           <CardTitle className="mb-3 mt-2">{careerOption.name}</CardTitle>
           <div className="flex justify-center">
             <Image
-              src={careerOption.image}
-              alt="career-path-icon"
+              src={`data:${careerOption.image?.contentType};base64,${careerOption.image?.data}`}
+              alt={careerOption.name}
               priority={true}
               width={100}
               height={100}
