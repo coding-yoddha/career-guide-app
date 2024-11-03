@@ -6,14 +6,29 @@ import { useRouter } from "next/navigation";
 import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 
-const DataCard = ({ careerOption }) => {
+// Define the type for the careerOption prop
+interface CareerOption {
+  id: string,
+  name: string;
+  image: string;
+  description: string;
+  redirectPageName?: string;
+}
+
+interface DataCardProps {
+  careerOption: CareerOption;
+}
+
+const DataCard: React.FC<DataCardProps> = ({ careerOption }) => {
   const router = useRouter();
   const [pageName, setPageName] = useState<string>("");
+
   const handleBtnClick = () => {
     if (pageName) {
       router.push(`/${pageName}`);
     }
   };
+
   useEffect(() => {
     if (careerOption?.redirectPageName) {
       setPageName(careerOption.redirectPageName);
@@ -21,6 +36,7 @@ const DataCard = ({ careerOption }) => {
       setPageName("");
     }
   }, [careerOption?.redirectPageName]);
+
   return (
     <div
       style={{ cursor: "pointer", height: "330px" }}
