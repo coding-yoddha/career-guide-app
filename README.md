@@ -1,2 +1,1 @@
-# career-guide-app
-Career Guide Frontend Web Application 
+This is a Career Guidance app for Students who are keen to explore various career paths.
