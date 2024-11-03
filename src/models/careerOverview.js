@@ -10,17 +10,13 @@ const careerSchema = new Schema(
       type: String,
       required: true,
     },
-    type: {
-      type: String,
-      required: true,
-    },
     redirectPageName: {
       type: String,
       required: true,
     },
     image: {
-      type: Buffer,
-      required: false,
+      data: Buffer,
+      contentType: String,
     },
   },
   { timestamps: true }

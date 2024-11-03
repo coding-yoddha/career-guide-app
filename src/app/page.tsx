@@ -4,13 +4,16 @@ import DataCard from "@/components/DataCard";
 import mainIcon from "../public/main-logo-1.png";
 import { getCareers } from "../actions/careerOverviewAction";
 
-// Define the type for the career option object
+// Define the type for the career option object, matching the Mongoose schema
 interface CareerOption {
-  id: string,
+  _id: string;
   name: string;
-  image: string;
   description: string;
-  redirectPageName?: string;
+  redirectPageName: string;
+  image?: {
+    data: string; // Base64 encoded string for client-side use
+    contentType: string;
+  };
 }
 
 interface CareersResponse {
@@ -20,7 +23,26 @@ interface CareersResponse {
 
 // The Home component is an async function returning JSX
 const Home: React.FC = async () => {
-  const { data }: CareersResponse = await getCareers();
+  const { data, errMsg }: CareersResponse = await getCareers();
+
+  if (errMsg) {
+    return (
+      <div className="p-3 w-full" style={{ marginTop: "5%" }}>
+        <p className="text-red-500">Error fetching careers: {errMsg}</p>
+      </div>
+    );
+  }
+
+  // Ensure image Buffer is converted to Base64 string
+  const formattedData = data?.map((career) => ({
+    ...career,
+    image: career.image
+      ? {
+          ...career.image,
+          data: Buffer.from(career.image.data).toString('base64'),
+        }
+      : undefined,
+  }));
 
   return (
     <div className="p-3 w-full" style={{ marginTop: "5%" }}>
@@ -41,9 +63,9 @@ const Home: React.FC = async () => {
           </div>
         </div>
         <div className="bg-zinc-5 rounded border-2 border-gray-500 p-4 flex flex-wrap gap-x-7 gap-y-4 mb-3 justify-items-start">
-          {data?.map((careerOption: CareerOption) => {
+          {formattedData?.map((careerOption: CareerOption) => {
             return (
-              <DataCard careerOption={careerOption} key={careerOption.id} />
+              <DataCard careerOption={careerOption} key={careerOption._id} />
             );
           })}
         </div>

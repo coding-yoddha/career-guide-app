@@ -6,8 +6,6 @@ const connectDB = async () => {
   }
 
   try {
-    console;
-    console.log("Mongodb connection test ", process.env.MONGODB_URL);
     await mongoose.connect(process.env.MONGODB_URL);
     console.log("Mongodb connected");
     return true;
