@@ -27,14 +27,14 @@ const Home: React.FC = async () => {
 
   if (errMsg) {
     return (
-      <div className="p-3 w-full" style={{ marginTop: "5%" }}>
+      <div className="p-3 w-full" style={{ marginTop: "7%" }}>
         <p className="text-red-500">Error fetching careers: {errMsg}</p>
       </div>
     );
   }
 
   return (
-    <div className="p-3 w-full" style={{ marginTop: "5%" }}>
+    <div className="p-3 w-full" style={{ marginTop: "7%" }}>
       <div className="flex flex-col  items-center">
         <div className="flex flex-col md:flex-row md:justify-start items-center w-full space-y-4 md:space-y-0 md:space-x-4">
           <div className="w-64 h-40 sm:w-72 sm:h-48 md:w-96 md:h-64 lg:w-[650px] lg:h-[400px]">

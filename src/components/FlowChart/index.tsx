@@ -25,7 +25,6 @@ const Flow: React.FC = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log("data", data);
         setFlowData(data?.data);
       });
   }, []);

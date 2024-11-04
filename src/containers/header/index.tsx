@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 w-full bg-white py-2 md:py-4 rounded-b-lg shadow-lg z-50"
+      className="fixed top-0 left-0 w-full bg-white py-2 md:rounded-b-lg shadow-lg z-50"
       style={{ height: "7%" }}
     >
       <div className="flex md:mr-2">
