@@ -28,10 +28,11 @@ const DataCard: React.FC<DataCardProps> = ({ careerOption }) => {
   const router = useRouter();
   const [pageName, setPageName] = useState<string>("");
 
-  const handleBtnClick = () => {
-    if (pageName) {
-      router.push(`/${pageName}`);
-    }
+  const handleBtnClick = (careerName = "engineering") => {
+    // if (pageName) {
+    //   router.push(`/${pageName}`);
+    // }
+    router.push(`/career-options?careerName=123`);
   };
 
   useEffect(() => {

@@ -4,18 +4,25 @@ import mailIcon from "../../public/mail.png";
 const ContactPage = () => {
   return (
     <div
-      className="bg-gray-50 min-h-screen flex flex-col justify-center py-12 px-6 lg:px-8 w-full "
+      className="bg-gray-50 min-h-screen flex flex-col justify-center py-12 px-6 lg:px-8 w-full"
       style={{ marginTop: "3%" }}
     >
       <h2 className="text-3xl font-bold text-center text-blue-600">
         Contact Us
       </h2>
-      <div className="flex justify-center items-center">
-        <div className="pr-36">
-          <Image src={mailIcon} height={400} width={300} alt="mail-icon" />
+      <div className="flex flex-col lg:flex-row justify-center items-center mt-8 lg:space-x-8">
+        <div className="mb-8 lg:mb-0 flex justify-center lg:pr-8">
+          <Image
+            src={mailIcon}
+            height={300}
+            width={250}
+            alt="mail-icon"
+            className="w-3/4 sm:w-1/2 lg:w-auto"
+          />
         </div>
-        <div className="max-w-2xl">
-          <p className="mt-2 text-center text-gray-600">
+
+        <div className="max-w-lg w-full">
+          <p className="mt-2 text-center lg:text-left text-gray-600">
             We're here to help! Fill out the form below to reach us.
           </p>
 
@@ -35,7 +42,7 @@ const ContactPage = () => {
                     name="name"
                     required
                     className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="John Doe"
+                    placeholder="Name please"
                   />
                 </div>
                 <div>
@@ -51,7 +58,7 @@ const ContactPage = () => {
                     name="email"
                     required
                     className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="you@example.com"
+                    placeholder="your email"
                   />
                 </div>
                 <div className="sm:col-span-2">
@@ -82,9 +89,9 @@ const ContactPage = () => {
             </form>
           </div>
 
-          <div className="mt-10 text-center">
+          <div className="mt-10 text-center lg:text-left">
             <h3 className="text-lg font-bold text-blue-600">Get in Touch</h3>
-            <p className="text-gray-600">Email: support@example.com</p>
+            <p className="text-gray-600">Email: team.aglakadam@gmail.com</p>
           </div>
         </div>
       </div>
