@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 const CareerOptions = () => {
   const searchParams = useSearchParams();
   const career = searchParams.get("careerName");
-  console.log("career", career);
+  console.log("career ", career);
   const router = useRouter();
 
   // useEffect(() => {
@@ -17,7 +17,7 @@ const CareerOptions = () => {
   // }, [career]);
   return (
     <div>
-      <OptionsDetails />
+      <OptionsDetails career={career} />
     </div>
   );
 };
