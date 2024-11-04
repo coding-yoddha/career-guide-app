@@ -1,13 +1,13 @@
 import Image from "next/image";
-import goingUpIcon from "../../public/going-up.png";
+import goingUpIcon from "../../public/career-growth.svg";
 
 const AboutUs = () => {
   return (
     <div
-      className="bg-gray-50 min-h-screen flex  justify-center py-12 px-6 lg:px-8 w-full"
+      className="bg-gray-50 min-h-screen flex flex-col lg:flex-row justify-center py-12 px-6 lg:px-8 w-full"
       style={{ marginTop: "3%" }}
     >
-      <div className="max-w-2xl  p-8">
+      <div className="max-w-2xl p-8 flex-1">
         <h2 className="text-3xl font-bold text-center text-blue-600">
           About Us
         </h2>
@@ -67,11 +67,13 @@ const AboutUs = () => {
           <p className="text-gray-600">Email: support@example.com</p>
         </div>
       </div>
-      <div className="w-1/2">
+
+      {/* Image Section */}
+      <div className="flex justify-center items-center w-full lg:w-1/2 mt-8 lg:mt-0">
         <Image
           src={goingUpIcon}
           alt="going-up"
-          style={{ height: "50rem", width: "50rem" }}
+          className="w-3/4 h-auto max-w-[40rem] max-h-[40rem]"
         />
       </div>
     </div>

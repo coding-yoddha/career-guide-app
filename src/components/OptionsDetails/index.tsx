@@ -8,7 +8,7 @@ const OptionsDetails = () => {
       title: "Software Engineering",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptate obcaecati facere cum dicta exercitationem rem vero eligendi soluta, molestiae suscipit quisquam voluptas quam saepe, consectetur quidem, ipsa repellendus vitae?. Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptate obcaecati facere cum dicta exercitationem rem vero eligendi soluta, molestiae suscipit quisquam voluptas quam saepe, consectetur quidem, ipsa repellendus vitae?",
-      link: "/engineering-options/electrical-engineer",
+      link: "/engineering/electrical-engineer",
     },
     {
       id: 2,
@@ -31,13 +31,12 @@ const OptionsDetails = () => {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptate obcaecati facere cum dicta exercitationem rem vero eligendi soluta, molestiae suscipit quisquam voluptas quam saepe, consectetur quidem, ipsa repellendus vitae?. Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptate obcaecati facere cum dicta exercitationem rem vero eligendi soluta, molestiae suscipit quisquam voluptas quam saepe, consectetur quidem, ipsa repellendus vitae?",
       link: "/page4",
     },
-    // Add more cards as needed
   ];
 
   return (
     <div
       className="flex justify-start py-10 bg-gradient-to-b from-white to-blue-100 min-h-screen w-full"
-      style={{ marginTop: "5%" }}
+      style={{ marginTop: "7%" }}
     >
       <div className="w-3/4 max-w-4xl space-y-6 ml-10">
         <h1 className="text-3xl font-semibold text-blue-800 mb-8">

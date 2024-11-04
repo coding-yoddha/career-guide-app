@@ -43,10 +43,7 @@ const DataCard: React.FC<DataCardProps> = ({ careerOption }) => {
   }, [careerOption?.redirectPageName]);
 
   return (
-    <div
-      style={{ cursor: "pointer", height: "330px" }}
-      className="w-11/12 md:w-30"
-    >
+    <div className="w-11/12 md:w-30 cursor-pointer">
       <Card style={{ height: "100%" }}>
         <CardContent>
           <CardTitle className="mb-3 mt-2">{careerOption.name}</CardTitle>
@@ -59,7 +56,7 @@ const DataCard: React.FC<DataCardProps> = ({ careerOption }) => {
               height={100}
             />
           </div>
-          <CardDescription className="mt-3 h-28 max-h-28 overflow-scroll">
+          <CardDescription className="mt-3 h-20 max-h-28 overflow-scroll">
             {careerOption.description}
           </CardDescription>
           <div className="mt-2.5 flex justify-center">
