@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "../ui/button";
 import {
   Pagination,
@@ -11,6 +12,8 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { fetchCareerOptions } from "@/utils/apiHelpers";
+import { Skeleton } from "../ui/skeleton";
 
 // Defining a type for card data
 interface Card {
@@ -32,13 +35,15 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
   const [optionData, setOptionData] = useState<Card[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    fetch(`/api/getOptions?option=${career}`, { method: "GET" })
-      .then((res) => res.json())
-      .then((data) => {
-        setOptionData(data?.data);
-      });
-  }, [career]);
+  const { isError, isLoading } = useQuery({
+    queryKey: ["getCareerOptions"],
+    queryFn: async () => {
+      const res = await fetchCareerOptions(career);
+      setOptionData(res?.data);
+      return res?.data;
+    },
+    enabled: !!career,
+  });
 
   const totalPages = Math.ceil(optionData.length / CARDS_PER_PAGE);
   const startIndex = (currentPage - 1) * CARDS_PER_PAGE;
@@ -64,27 +69,46 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
           Explore Your Options
         </h1>
 
-        {cardsToDisplay.map((card) => (
-          <div
-            key={card._id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden p-6 hover:shadow-2xl transition-shadow duration-300"
-          >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-              {card.choice}
-            </h2>
-            <p className="text-gray-600 mb-4">{card.description}</p>
-
-            <Button
-              onClick={() => {
-                router.push(
-                  `/career-options/flow-chart?careerOption=${card.choice}`
-                );
-              }}
-            >
-              Learn More
-            </Button>
+        {isLoading ? (
+          <div className="flex flex-col space-y-4">
+            {[...Array(3)].map((_, index) => (
+              <div
+                key={index}
+                className="bg-white shadow-lg rounded-lg overflow-hidden p-6 hover:shadow-2xl transition-shadow duration-300"
+              >
+                <Skeleton className="h-8 w-1/3 rounded-lg" />
+                <div className="space-y-2 mt-4">
+                  <Skeleton className="h-[80px] w-full" />
+                </div>
+                <div className="mt-4">
+                  <Skeleton className="h-8 w-[100px] rounded-lg" />
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        ) : (
+          cardsToDisplay.map((card) => (
+            <div
+              key={card._id}
+              className="bg-white shadow-lg rounded-lg overflow-hidden p-6 hover:shadow-2xl transition-shadow duration-300"
+            >
+              <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+                {card.choice}
+              </h2>
+              <p className="text-gray-600 mb-4">{card.description}</p>
+
+              <Button
+                onClick={() => {
+                  router.push(
+                    `/career-options/flow-chart?careerOption=${card.choice}`
+                  );
+                }}
+              >
+                Learn More
+              </Button>
+            </div>
+          ))
+        )}
 
         <Pagination>
           <PaginationContent>
