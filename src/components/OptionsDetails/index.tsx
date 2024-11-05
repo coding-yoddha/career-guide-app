@@ -24,18 +24,12 @@ interface OptionsDetailsProps {
 const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
   const router = useRouter();
   const [optionData, setOptionData] = useState<Card[]>();
-  const url = process.env.NEXT_PUBLIC_BASE_URL;
 
   useEffect(() => {
-    console.log(
-      "{url}/api/getOptions?option=${career}",
-      `${url}/api/getOptions?option=${career}`
-    );
-    fetch(`${url}/api/getOptions?option=${career}`, { method: "GET" })
+    fetch(`api/getOptions?option=${career}`, { method: "GET" })
       .then((res) => res.json())
       .then((data) => {
         setOptionData(data?.data);
-        console.log("data", data);
       });
   }, []);
   return (
