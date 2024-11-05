@@ -21,12 +21,11 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
     edges: [],
   });
   const router = useRouter();
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
   useEffect(() => {
-    fetch(
-      `${baseUrl}/api/getFlows?start=${"10th"}&end=${"Electrical Engineering"}`,
-      { method: "GET" }
-    )
+    fetch(`api/getFlows?start=${"10th"}&end=${"Electrical Engineering"}`, {
+      method: "GET",
+    })
       .then((res) => res.json())
       .then((data) => {
         setFlowData(data?.data);
