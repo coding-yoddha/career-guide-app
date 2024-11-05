@@ -11,16 +11,20 @@ interface FlowData {
   edges: Edge[];
 }
 
-const Flow: React.FC = () => {
+interface CareerOption {
+  careerOption: string | null;
+}
+
+const Flow: React.FC<CareerOption> = ({ careerOption }) => {
   const [flowData, setFlowData] = useState<FlowData>({
     nodes: [],
     edges: [],
   });
   const router = useRouter();
-
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   useEffect(() => {
     fetch(
-      `http://localhost:3000/api/getFlows?start=${"10th"}&end=${"Electrical Engineering"}`,
+      `${baseUrl}/api/getFlows?start=${"10th"}&end=${"Electrical Engineering"}`,
       { method: "GET" }
     )
       .then((res) => res.json())

@@ -64,7 +64,7 @@ const AboutUs = () => {
           <p className="mt-2 text-gray-600">
             For inquiries and more information:
           </p>
-          <p className="text-gray-600">Email: support@example.com</p>
+          <p className="text-gray-600">Email: team.aglakadam@gmail.com</p>
         </div>
       </div>
 

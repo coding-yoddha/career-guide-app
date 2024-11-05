@@ -6,11 +6,15 @@ const careerOptionSchema = new Schema(
       type: String,
       required: true,
     },
-    option: {
+    choice: {
       type: String,
       required: true,
     },
     description: {
+      type: String,
+      required: true,
+    },
+    dailyLifeExample: {
       type: String,
       required: true,
     },

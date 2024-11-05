@@ -27,11 +27,11 @@ interface DataCardProps {
 const DataCard: React.FC<DataCardProps> = ({ careerOption }) => {
   const router = useRouter();
   const [pageName, setPageName] = useState<string>("");
-
   const handleBtnClick = () => {
-    if (pageName) {
-      router.push(`/${pageName}`);
-    }
+    // if (pageName) {
+    //   router.push(`/${pageName}`);
+    // }
+    router.push(`/career-options?careerName=${careerOption.redirectPageName}`);
   };
 
   useEffect(() => {
