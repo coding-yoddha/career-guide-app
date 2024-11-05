@@ -20,7 +20,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Career Guide App",
+  title: "Agla Kadam",
   description:
     "One stop destination to know what to choose after your 10th Standard",
 };

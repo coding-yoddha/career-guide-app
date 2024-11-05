@@ -23,7 +23,7 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
   const router = useRouter();
 
   useEffect(() => {
-    fetch(`api/getFlows?start=${"10th"}&end=${"Electrical Engineering"}`, {
+    fetch(`/api/getFlows?start=${"X - State/SSC"}&end=${careerOption}`, {
       method: "GET",
     })
       .then((res) => res.json())

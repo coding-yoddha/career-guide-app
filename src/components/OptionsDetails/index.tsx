@@ -1,8 +1,16 @@
 "use client";
-import Link from "next/link";
+
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
-import { useEffect, useState } from "react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 // Defining a type for card data
 interface Card {
@@ -13,36 +21,50 @@ interface Card {
   urlParam: string;
 }
 
-// Defining a type for the data structure returned by the API
-interface OptionsData {
-  cards: Card[];
-}
 interface OptionsDetailsProps {
   career: string | null;
 }
 
+const CARDS_PER_PAGE = 5;
+
 const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
   const router = useRouter();
-  const [optionData, setOptionData] = useState<Card[]>();
+  const [optionData, setOptionData] = useState<Card[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetch(`api/getOptions?option=${career}`, { method: "GET" })
+    fetch(`/api/getOptions?option=${career}`, { method: "GET" })
       .then((res) => res.json())
       .then((data) => {
         setOptionData(data?.data);
       });
-  }, []);
+  }, [career]);
+
+  const totalPages = Math.ceil(optionData.length / CARDS_PER_PAGE);
+  const startIndex = (currentPage - 1) * CARDS_PER_PAGE;
+  const endIndex = startIndex + CARDS_PER_PAGE;
+  const cardsToDisplay = optionData.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    setCurrentPage(page);
+  };
+
   return (
     <div
       className="flex justify-start bg-gradient-to-b from-white to-blue-100 min-h-screen w-full"
       style={{ marginTop: "6%" }}
     >
       <div className="w-3/4 max-w-4xl space-y-6 ml-10 mb-4">
-        <h1 className="text-3xl font-semibold text-blue-800 mb-8">
+        <h1 className="text-3xl font-semibold text-gray-900 mb-8">
           Explore Your Options
         </h1>
 
-        {optionData?.map((card) => (
+        {cardsToDisplay.map((card) => (
           <div
             key={card._id}
             className="bg-white shadow-lg rounded-lg overflow-hidden p-6 hover:shadow-2xl transition-shadow duration-300"
@@ -63,6 +85,47 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
             </Button>
           </div>
         ))}
+
+        <Pagination>
+          <PaginationContent>
+            <PaginationPrevious
+              onClick={() => handlePageChange(currentPage - 1)}
+              aria-disabled={currentPage === 1}
+              className={
+                currentPage === 1
+                  ? "pointer-events-none opacity-50"
+                  : "cursor-pointer"
+              }
+            >
+              Previous
+            </PaginationPrevious>
+
+            <PaginationItem>
+              {Array.from({ length: totalPages }, (_, index) => (
+                <PaginationLink
+                  key={index}
+                  isActive={currentPage === index + 1}
+                  onClick={() => handlePageChange(index + 1)}
+                  className="cursor-pointer"
+                >
+                  {index + 1}
+                </PaginationLink>
+              ))}
+            </PaginationItem>
+
+            <PaginationNext
+              onClick={() => handlePageChange(currentPage + 1)}
+              aria-disabled={currentPage === totalPages}
+              className={
+                currentPage === totalPages
+                  ? "pointer-events-none opacity-50"
+                  : "cursor-pointer"
+              }
+            >
+              Next
+            </PaginationNext>
+          </PaginationContent>
+        </Pagination>
       </div>
     </div>
   );
