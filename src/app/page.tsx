@@ -21,7 +21,6 @@ interface CareersResponse {
   errMsg?: string;
 }
 
-// The Home component is an async function returning JSX
 const Home: React.FC = async () => {
   const { data, errMsg }: CareersResponse = await getCareers();
 
@@ -42,17 +41,19 @@ const Home: React.FC = async () => {
           </div>
           <div className="text-center px-4 md:text-left">
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal"
               style={{ color: "#1f2937", letterSpacing: "-0.02em" }}
             >
-              Welcome to Agla Kadam
+              Your next step - Your {""}
+              <span className="font-extrabold">Agla Kadam</span>
             </h1>
             <p
               className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-500 mt-3 max-w-sm sm:max-w-md md:max-w-lg font-medium"
               style={{ color: "#4b5563" }}
             >
-              Unlock your potential and explore your next steps with a tailored
-              roadmap for every student after 10th and 12th grade.
+              Welcome to your journey! Explore options, find your passions, and
+              take the first step toward following your dreams. Your future
+              starts here!
             </p>
           </div>
         </div>

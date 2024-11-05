@@ -33,7 +33,7 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetch(`api/getOptions?option=${career}`, { method: "GET" })
+    fetch(`/api/getOptions?option=${career}`, { method: "GET" })
       .then((res) => res.json())
       .then((data) => {
         setOptionData(data?.data);
@@ -43,7 +43,7 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
   const totalPages = Math.ceil(optionData.length / CARDS_PER_PAGE);
   const startIndex = (currentPage - 1) * CARDS_PER_PAGE;
   const endIndex = startIndex + CARDS_PER_PAGE;
-  const paginatedCards = optionData.slice(startIndex, endIndex);
+  const cardsToDisplay = optionData.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     window.scrollTo({
@@ -64,7 +64,7 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
           Explore Your Options
         </h1>
 
-        {paginatedCards.map((card) => (
+        {cardsToDisplay.map((card) => (
           <div
             key={card._id}
             className="bg-white shadow-lg rounded-lg overflow-hidden p-6 hover:shadow-2xl transition-shadow duration-300"
