@@ -27,13 +27,15 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
   const url = process.env.NEXT_PUBLIC_BASE_URL;
 
   useEffect(() => {
-    fetch(
-      `${url}/api/getOptions?option=${career}`,
-      { method: "GET" }
-    )
+    console.log(
+      "{url}/api/getOptions?option=${career}",
+      `${url}/api/getOptions?option=${career}`
+    );
+    fetch(`${url}/api/getOptions?option=${career}`, { method: "GET" })
       .then((res) => res.json())
       .then((data) => {
         setOptionData(data?.data);
+        console.log("data", data);
       });
   }, []);
   return (
@@ -58,7 +60,9 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
 
             <Button
               onClick={() => {
-                router.push(`/details/${card.urlParam}`);
+                router.push(
+                  `/career-options/flow-chart?careerOption=${card.choice}`
+                );
               }}
               className="inline-block px-6 py-2 text-sm font-medium text-white bg-blue-600 rounded-md shadow-md hover:bg-blue-700 transition-colors duration-200"
             >
