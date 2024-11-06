@@ -4,6 +4,7 @@ import "./globals.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Header from "@/containers/header";
+import TanstackProvider from "@/providers/TanstackProvider";
 
 // Font Awesome configuration
 config.autoAddCss = false;
@@ -35,10 +36,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div>
-          <Header />
-          {children}
-        </div>
+        <TanstackProvider>
+          <div>
+            <Header />
+            {children}
+          </div>
+        </TanstackProvider>
       </body>
     </html>
   );
