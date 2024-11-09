@@ -38,6 +38,9 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
 
   const handleNodeClick = (event: React.MouseEvent, node: Node) => {
     // Navigate based on the node ID
+    if (node.data.clickable === false) {
+      return;
+    }
     router.push(
       `/details?careerOption=${careerOption}&careerPath=${node.data?.label}`
     );

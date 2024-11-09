@@ -38,9 +38,7 @@ function convertPathsToNodes(paths, start, end) {
             backgroundColor: node === start ? "#74b1e3" : "#ffcccb",
             color: "#333",
             border: "2px solid " + (node === start ? "#1285e3" : "#ff7f7f"),
-            cursor: !(node === start || node === end)
-              ? "not-allowed"
-              : "pointer",
+            cursor: node === start || node === end ? "not-allowed" : "pointer",
           },
         });
 
