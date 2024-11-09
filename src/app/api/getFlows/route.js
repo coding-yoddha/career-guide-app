@@ -30,7 +30,7 @@ function convertPathsToNodes(paths, start, end) {
           id: idCounter.toString(),
           data: {
             label: node,
-            clickable: node === start || node === end,
+            clickable: !(node === start || node === end),
           },
           position: { x: currentXOffset, y: index * yOffset },
           type: index === 0 ? "input" : "default",
@@ -38,7 +38,9 @@ function convertPathsToNodes(paths, start, end) {
             backgroundColor: node === start ? "#74b1e3" : "#ffcccb",
             color: "#333",
             border: "2px solid " + (node === start ? "#1285e3" : "#ff7f7f"),
-            cursor: "pointer",
+            cursor: !(node === start || node === end)
+              ? "not-allowed"
+              : "pointer",
           },
         });
 

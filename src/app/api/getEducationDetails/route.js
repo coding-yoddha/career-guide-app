@@ -11,8 +11,8 @@ export async function GET(req) {
     await connectToDB();
     const data = {};
     const { searchParams } = new URL(req.url);
-    const education = "Intermediate";
-    const role = "Electrical Engineer";
+    const education = searchParams.get("education");
+    const role = searchParams.get("role");
     const eduData = await EducationDetail.find({ name: education });
     console.log(eduData);
     if (eduData.length > 0) {
