@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import AcademicsMap from "../../../models/academicsMap";
 export const dynamic = "force-dynamic"; // Ensure dynamic rendering
 
-function convertPathsToNodes(paths) {
+function convertPathsToNodes(paths, start, end) {
   const uniqueNodes = new Map();
   const edges = [];
   let idCounter = 1;
@@ -28,13 +28,16 @@ function convertPathsToNodes(paths) {
         const currentXOffset = levelPositions.get(index) * xOffsetBase;
         uniqueNodes.set(node, {
           id: idCounter.toString(),
-          data: { label: node },
+          data: {
+            label: node,
+            clickable: node === start || node === end,
+          },
           position: { x: currentXOffset, y: index * yOffset },
           type: index === 0 ? "input" : "default",
           style: {
-            backgroundColor: "#ffcccb",
+            backgroundColor: node === start ? "#74b1e3" : "#ffcccb",
             color: "#333",
-            border: "2px solid #ff7f7f",
+            border: "2px solid " + (node === start ? "#1285e3" : "#ff7f7f"),
             cursor: "pointer",
           },
         });
@@ -87,7 +90,7 @@ function generateFlowChartData(start, end, nodes) {
   // Start the DFS from the given starting node
   dfs([start], start);
   console.log(paths);
-  const result = convertPathsToNodes(paths);
+  const result = convertPathsToNodes(paths, start, end);
   console.log(JSON.stringify(result));
   return result;
 }

@@ -30,6 +30,7 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
     queryFn: async () => {
       const res = await fetchFlowData("X - State/SSC", careerOption);
       setFlowData(res?.data);
+      console.log("res?.data", res?.data);
       return res?.data;
     },
     enabled: !!careerOption,
@@ -37,13 +38,9 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
 
   const handleNodeClick = (event: React.MouseEvent, node: Node) => {
     // Navigate based on the node ID
-    if (node.id === "1") {
-      router.push("/engineering");
-    } else if (node.id === "2") {
-      router.push("/engineering/intermediate");
-    } else if (node.id === "3") {
-      router.push("/engineering/btech");
-    }
+    router.push(
+      `/details?careerOption=${careerOption}&careerPath=${node.data?.label}`
+    );
   };
 
   return (
