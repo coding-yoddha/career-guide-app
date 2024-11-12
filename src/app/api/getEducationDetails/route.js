@@ -40,6 +40,19 @@ export async function GET(req) {
             exams: course.exams,
           });
         }
+        data.resources = [];
+        data.resources.push({
+          name: "resource 1",
+          url: "./"
+        });
+        data.resources.push({
+          name: "resource 2",
+          url: "./"
+        });
+        data.resources.push({
+          name: "resource 3",
+          url: "./"
+        })
       }
     }
 
