@@ -4,7 +4,14 @@ import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchEducationDetails } from "@/utils/apiHelpers";
 
-const Accordion = ({ title, children, isOpen, onClick }) => (
+interface AccordionProps {
+  title: string;
+  children: React.ReactNode;
+  isOpen: boolean;
+  onClick: () => void;
+}
+
+const Accordion: React.FC<AccordionProps> = ({ title, children, isOpen, onClick }) => (
   <div className="border-b border-gray-300 w-full">
     <button
       onClick={onClick}
@@ -19,23 +26,42 @@ const Accordion = ({ title, children, isOpen, onClick }) => (
   </div>
 );
 
-const DataDisplay = () => {
+interface Course {
+  name: string;
+  description: string;
+  exams: string;
+}
+
+interface Resource {
+  name: string;
+  url: string;
+}
+
+interface EducationDetails {
+  name: string;
+  description: string;
+  otherOptions: string;
+  courses: Course[];
+  resources: Resource[];
+}
+
+const DataDisplay: React.FC = () => {
   const searchParams = useSearchParams();
   const education = searchParams.get("careerPath");
   const role = searchParams.get("careerOption");
 
-  const { data, isError, isLoading } = useQuery({
+  const { data, isError, isLoading } = useQuery<EducationDetails>({
     queryKey: ["getEducationDetails", role, education],
     queryFn: async () => {
-      const res = await fetchEducationDetails(role, education);
+      const res = await fetchEducationDetails(role as string, education as string);
       return res?.data;
     },
     enabled: !!role && !!education,
   });
 
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleAccordion = (index) => {
+  const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
