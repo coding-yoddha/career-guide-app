@@ -11,8 +11,10 @@ const educationSchema = new Schema(
       required: true,
     },
     otherOptions: {
-      type: String,
-      required: true,
+      type: [String],
+    },
+    colleges: {
+        type: [String],
     },
   },
   { timestamps: true }
