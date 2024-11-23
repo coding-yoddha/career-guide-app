@@ -24,13 +24,7 @@ export async function GET(req) {
         education,
       });
       if (roleToeduMapData.length > 0) {
-        const courseMappings = await RoleToCourceIdMap.find({
-          roleToEducationId: roleToeduMapData[0].id,
-        });
-        const courseIds = [];
-        for (const row of courseMappings) {
-          courseIds.push(row.courseId);
-        }
+        const courseIds = roleToeduMapData[0].courseIds;
         const courseData = await CourseDetail.find({ id: { $in: courseIds } });
         data.courses = [];
         for (var course of courseData) {
