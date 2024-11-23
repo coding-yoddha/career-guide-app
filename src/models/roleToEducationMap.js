@@ -10,8 +10,8 @@ const roleToEducationSchema = new Schema(
       type: String,
       required: true,
     },
-    id: {
-      type: String,
+    courseIds: {
+      type: [String],
       required: true,
     },
   },
