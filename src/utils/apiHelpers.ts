@@ -10,7 +10,6 @@ const fetchFlowData = async (start: string | null, end: string | null) => {
 };
 
 const fetchCareerOptions = async (career: string | null) => {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
   const res = await fetch(`/api/getOptions?option=${career}`, {
     method: "GET",
   });
@@ -25,7 +24,6 @@ const fetchEducationDetails = async (
   role: string | null,
   education: string | null
 ) => {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
   const res = await fetch(
     `/api/getEducationDetails?role=${role}&education=${education}`,
     {
