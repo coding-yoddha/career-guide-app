@@ -63,8 +63,6 @@ const Home: React.FC = async () => {
           ))}
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

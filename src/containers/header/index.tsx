@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <nav
       className="fixed top-0 left-0 w-full bg-white py-2 md:rounded-b-lg shadow-lg z-50"
-      style={{ height: "7%" }}
+      style={{ height: "3.5rem" }}
     >
       <div className="flex md:mr-2">
         <div
@@ -29,7 +29,7 @@ const Header = () => {
           </a>
 
           <button
-            className="border border-solid border-gray-600 px-3 py-1 rounded text-gray-600 opacity-50 hover:opacity-75 md:hidden"
+            className="border border-solid border-gray-600 px-3 py-1 ml-5 rounded text-gray-600 opacity-50 hover:opacity-75 md:hidden"
             onClick={toggleSidebar}
           >
             <FontAwesomeIcon icon={isSidebarOpen ? faTimes : faBars} />

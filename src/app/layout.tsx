@@ -5,6 +5,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Header from "@/containers/header";
 import TanstackProvider from "@/providers/TanstackProvider";
+import Footer from "@/containers/footer";
 
 // Font Awesome configuration
 config.autoAddCss = false;
@@ -34,13 +35,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <TanstackProvider>
-          <div>
-            <Header />
+          <Header />
+          <main style={{ marginTop: "4rem" }} className="min-h-[inherit]">
             {children}
-          </div>
+          </main>
+          <Footer />
         </TanstackProvider>
       </body>
     </html>
