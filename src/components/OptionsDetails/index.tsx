@@ -60,15 +60,13 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
   };
 
   return (
-    <div
-      className="flex justify-start bg-gradient-to-b from-white to-blue-100 min-h-screen w-full"
-      style={{ marginTop: "6%" }}
-    >
-      <div className="w-3/4 max-w-4xl space-y-6 ml-10 mb-4">
+    <div className="flex flex-col justify-start bg-gradient-to-b from-white to-blue-100 min-h-screen w-full">
+      <div className="flex justify-center">
         <h1 className="text-3xl font-semibold text-gray-900 mb-8">
           Explore Your Options
         </h1>
-
+      </div>
+      <div className="w-3/4 max-w-4xl space-y-6 ml-10 mb-4">
         {isLoading ? (
           <div className="flex flex-col space-y-4">
             {[...Array(3)].map((_, index) => (
@@ -109,7 +107,8 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
             </div>
           ))
         )}
-
+      </div>
+      <div className="flex justify-center mb-4">
         <Pagination>
           <PaginationContent>
             <PaginationPrevious
