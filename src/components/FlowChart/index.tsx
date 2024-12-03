@@ -47,38 +47,46 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50 px-4 sm:px-6">
-      <div className="w-full max-w-4xl h-[70vh] p-6 flex flex-col border-2 border-gray-300 rounded-lg shadow-lg bg-white overflow-hidden">
-        {/* Title Section */}
-        <h1 className="text-2xl font-bold text-gray-800 mb-4 text-center">
-          Roadmap
-        </h1>
+    <div>
+      <h1 className="text-3xl font-extrabold text-gray-600 mb-2 text-center">
+        Career Roadmap
+      </h1>
+      <p className="text-center text-gray-600 mb-6">
+        Explore the key steps in your career journey. Click on any step to learn
+        more about it.
+      </p>
 
-        {/* Content Section */}
-        <div className="flex-grow flex items-center justify-center">
-          {isLoading ? (
-            <p className="text-xl font-semibold text-gray-600">Loading...</p>
-          ) : (
-            <ReactFlow
-              nodes={flowData.nodes}
-              edges={flowData.edges}
-              onNodeClick={handleNodeClick}
-              style={{ height: "100%", width: "100%" }}
-              panOnDrag={false}
-              panOnScroll={false}
-              zoomOnScroll={false}
-              zoomOnPinch={false}
-              zoomOnDoubleClick={false}
-              elementsSelectable={false}
-              fitView
-              fitViewOptions={{
-                padding: 0.2,
-              }}
-              proOptions={{ hideAttribution: true }}
-            />
-          )}
+      <div className="flex justify-center px-4 sm:px-6">
+        <div className="w-full max-w-4xl h-[80vh] p-6 flex flex-col border border-gray-300 rounded-lg shadow-lg bg-white overflow-hidden">
+          <div className="flex-grow flex items-center justify-center relative">
+            {isLoading ? (
+              <p className="text-xl font-semibold text-gray-600">Loading...</p>
+            ) : (
+              <ReactFlow
+                nodes={flowData.nodes}
+                edges={flowData.edges}
+                onNodeClick={handleNodeClick}
+                style={{ height: "100%", width: "100%" }}
+                panOnDrag={false}
+                panOnScroll={false}
+                zoomOnScroll={false}
+                zoomOnPinch={false}
+                zoomOnDoubleClick={false}
+                elementsSelectable={false}
+                fitView
+                fitViewOptions={{
+                  padding: 0.2,
+                }}
+                proOptions={{ hideAttribution: true }}
+              />
+            )}
+          </div>
         </div>
       </div>
+      <span className="block m-2 font-semibold text-gray-600 bg-gray-100 border-l-4 border-yellow-400 p-4 rounded-md ">
+        Since you are looking for what's next after 10th, you won't be able to
+        click on <span className="font-extrabold">X - State/SSC</span>
+      </span>
     </div>
   );
 };

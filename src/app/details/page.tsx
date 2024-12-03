@@ -51,65 +51,90 @@ const DataDisplay: React.FC = () => {
     );
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">
+    <div className="min-h-screen font-medium bg-gray-100 flex flex-col py-12 px-4">
+      {/* Title */}
+      <h1 className="text-4xl font-extrabold text-gray-600 text-center mb-8">
         {data.name}
       </h1>
-      <div className="max-w-4xl ml-4 my-8 p-6 shadow-lg rounded-lg mt-20">
-        {/* Description Section */}
-        <section className="mb-6">
-          <p>{data.description}</p>
-        </section>
 
-        {/* Other Options Section */}
-        <section className="mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-            Other Options
-          </h2>
-          <p>{data.otherOptions}</p>
+      {/* Container */}
+      <div className="max-w-7xl w-full bg-white shadow-xl rounded-lg p-8">
+        {/* Description Section */}
+        <section className="mb-12">
+          {/* <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+            Description
+          </h2> */}
+          <p className="text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md border-l-4 border-gray-500">
+            {data.description}
+          </p>
         </section>
 
         {/* Separator */}
-        <div className="border-t border-gray-300 my-4"></div>
+        <div className="border-t border-gray-300 my-8"></div>
 
         {/* Courses Section */}
-        <section className="mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-2">Courses</h2>
-          {data.courses.map((course, index) => (
-            <div key={index} className="mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">
-                {course.name}
-              </h3>
-              <p>{course.description}</p>
-              <p className="text-gray-500 mt-1">Exams: {course.exams}</p>
-            </div>
-          ))}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Courses</h2>
+          <div className="space-y-6">
+            {data.courses.map((course, index) => (
+              <div
+                key={index}
+                className="p-4 border rounded-lg bg-gray-50 hover:bg-gray-100 shadow-sm transition"
+              >
+                <h3 className="text-lg font-bold text-gray-800 mb-2">
+                  {course.name}
+                </h3>
+                <p className="text-gray-600 mb-1 ">{course.description}</p>
+                <p className="text-lg my-2">
+                  <span className="font-extrabold text-gray-700">Exams:</span>{" "}
+                  {course.exams}
+                </p>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* Separator */}
-        <div className="border-t border-gray-300 my-4"></div>
+        <div className="border-t border-gray-300 my-8"></div>
 
         {/* Resources Section */}
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Resources
           </h2>
-          {data.resources.map((resource, index) => (
-            <div
-              key={index}
-              className="flex justify-between items-center mb-4 p-4 border border-gray-300 rounded-lg"
-            >
-              <span className="text-gray-700">{resource.name}</span>
-              <a
-                href={resource.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 underline"
+          <div className="space-y-4">
+            {data.resources.map((resource, index) => (
+              <div
+                key={index}
+                className="flex justify-between items-center p-4 border rounded-lg bg-gray-50 hover:bg-gray-100 shadow-sm transition"
               >
-                Link
-              </a>
-            </div>
-          ))}
+                <span className="text-gray-800 font-medium">
+                  {resource.name}
+                </span>
+                <a
+                  href={resource.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline font-semibold"
+                >
+                  Link
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Separator */}
+        <div className="border-t border-gray-300 my-8"></div>
+
+        {/* Other Options Section */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            Other Options
+          </h2>
+          <p className="text-gray-700 text-base leading-relaxed">
+            {data.otherOptions}
+          </p>
         </section>
       </div>
     </div>
