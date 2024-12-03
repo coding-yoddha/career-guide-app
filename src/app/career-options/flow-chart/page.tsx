@@ -7,7 +7,7 @@ const FlowData = () => {
   const careerOption = searchParams.get("careerOption");
 
   return (
-    <div style={{ height: "70vh" }}>
+    <div>
       <Flow careerOption={careerOption} />
     </div>
   );
