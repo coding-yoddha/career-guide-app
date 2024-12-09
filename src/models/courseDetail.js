@@ -18,6 +18,19 @@ const courseSchema = new Schema(
       type: String,
       required: true,
     },
+    resources: [
+      {
+        name: {
+          type: String,
+        },
+        description: {
+          type: String,
+        },
+        url: {
+          type: String,
+        },
+      },
+    ],
   },
   { timestamps: true }
 );
