@@ -31,6 +31,9 @@ const courseSchema = new Schema(
         },
       },
     ],
+    reallifeexample: {
+      type: [String],
+    },
   },
   { timestamps: true }
 );
