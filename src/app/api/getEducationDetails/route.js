@@ -23,7 +23,7 @@ export async function GET(req) {
       });
       data.courses = [];
       data.resources = [];
-      var resources = [];
+      data.reallifeexamples = [];
       if (roleToeduMapData.length > 0) {
         const courseIds = roleToeduMapData[0].courseIds;
         const courseData = await CourseDetail.find({ id: { $in: courseIds } }); 
@@ -33,14 +33,8 @@ export async function GET(req) {
             description: course.description,
             exams: course.exams,
           });
-          resources = resources.concat(course.resources);
-        }
-        for(var resource of resources){
-          data.resources.push({
-            name: resource.name,
-            description: resource.description,
-            url: resource.url,
-          });
+          data.resources = data.resources.concat(course.resources);
+          data.reallifeexamples = data.reallifeexamples.concat(course.reallifeexample);
         }
       }
     }
