@@ -17,6 +17,7 @@ export async function GET(req) {
       data.name = eduData[0].name;
       data.description = eduData[0].description;
       data.otherOptions = eduData[0].otherOptions;
+      data.commonResources = eduData[0].resources;
       const roleToeduMapData = await RoleToEducationMap.find({
         role,
         education,
