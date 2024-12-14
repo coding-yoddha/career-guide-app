@@ -132,13 +132,13 @@ const DataDisplay: React.FC = () => {
                 The Engineers Behind Everyday Innovations
               </h2>
               <div className="space-y-4">
-                {data?.reallifeexamples?.map((reallifeexample, index) => (
+                {data?.realLifeExamples?.map((realLifeExample, index) => (
                   <div
                     key={index}
                     className="flex justify-between items-center p-4 border rounded-lg  hover:from-blue-100 hover:to-indigo-100 shadow-md transition-all duration-300 sm:w-2/4 w-[100%] border-l-4 border-l-customBorder2  transform hover:scale-105 hover:shadow-lg"
                   >
                     <span className="text-gray-800 font-semibold">
-                      {reallifeexample}
+                      {realLifeExample}
                     </span>
                   </div>
                 ))}
