@@ -30,6 +30,10 @@ interface CommonResource {
   url: string;
 }
 
+interface Description {
+  data: string;
+}
+
 interface EducationDetails {
   name: string;
   description: string;
@@ -39,7 +43,7 @@ interface EducationDetails {
   commonResources: CommonResource[];
 }
 
-const DynamicDescription = ({ data }) => {
+const DynamicDescription = ({ data }: Description) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
