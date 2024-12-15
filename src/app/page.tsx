@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Footer from "@/containers/footer";
 import DataCard from "@/components/DataCard";
+import NotificationCard from "@/components/NotificationCard";
 import mainIcon from "../public/mainLogo.svg";
 import { getCareers } from "../actions/careerOverviewAction";
 
@@ -57,6 +58,12 @@ const Home: React.FC = async () => {
             </p>
           </div>
         </div>
+        <NotificationCard
+          title={" Exciting Updates Coming Soon!"}
+          description={
+            "We currently have few career choices available as of now. Stay tuned for more options that will be added in the future!"
+          }
+        />
         <div className="bg-zinc-50 rounded border-2 border-gray-500 p-4 flex flex-wrap gap-y-4 mb-3 justify-around mt-6">
           {data?.map((careerOption: CareerOption) => (
             <DataCard careerOption={careerOption} key={careerOption._id} />
