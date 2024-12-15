@@ -37,10 +37,11 @@ interface Description {
 interface EducationDetails {
   name: string;
   description: string;
-  otherOptions: string;
+  otherOptions: string[];
   courses: Course[];
   resources: Resource[];
   commonResources: CommonResource[];
+  realLifeExamples: string[];
 }
 
 const DynamicDescription = ({ data }: Description) => {
