@@ -279,9 +279,18 @@ const DataDisplay: React.FC = () => {
             {/* Other Options Section */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 shadow-md p-4 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
-                Other Options
+                Explore Alternative Pathways to Your Dream Career
               </h2>
-              <ul className="space-y-4">
+              <p className="text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md">
+                There’s no single route to achieving your dreams. Every career
+                offers multiple options to reach your goals, allowing you to
+                choose the path that aligns best with your interests and
+                aspirations.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md">
+                Explore the options below to discover your possibilities{" "}
+              </p>
+              <ul className="space-y-4 mt-3">
                 {data.otherOptions.map((option, index) => (
                   <li
                     key={index}
