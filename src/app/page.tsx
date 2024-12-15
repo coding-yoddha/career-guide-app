@@ -58,6 +58,31 @@ const Home: React.FC = async () => {
             </p>
           </div>
         </div>
+        <section className="p-8 mb-12">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+            Your Roadmap to a Bright Future
+          </h2>
+          <p className="text-gray-700 text-lg leading-relaxed mb-4">
+            Feeling confused about what to do after 10th class? Don’t
+            worry—we’re here to help! This website is designed to guide students
+            like you in exploring the best career options available after 10th
+            class. Whether you dream of becoming an engineer, doctor, artist,
+            lawyer, or anything else, we’ll show you the different paths you can
+            take to achieve your goals.
+          </p>
+          <p className="text-gray-700 text-lg leading-relaxed mb-4">
+            Learn which subjects to choose, what courses to take, and how to
+            plan your journey step by step. From science, commerce, and arts to
+            unique career fields, discover all the opportunities waiting for
+            you. With clear guidance and valuable resources, we’ll help you make
+            confident decisions about your future.
+          </p>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Start your journey today and explore the possibilities for a
+            successful and fulfilling career after 10th class!
+          </p>
+        </section>
+
         <NotificationCard
           title={" Exciting Updates Coming Soon!"}
           description={

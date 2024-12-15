@@ -26,7 +26,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Agla Kadam",
   description:
-    "One stop destination to know what to choose after your 10th Standard",
+    "Discover different career paths after 10th class. Get step-by-step guidance to pursue your dream career in engineering, medicine, arts, and more!.One stop destination to know what to choose after your 10th Standard",
 };
 
 export default function RootLayout({
