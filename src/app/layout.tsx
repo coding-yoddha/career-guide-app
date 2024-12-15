@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { Toaster } from "@/components/ui/toaster";
 import localFont from "next/font/local";
 import "./globals.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -42,8 +44,10 @@ export default function RootLayout({
           <main style={{ marginTop: "4rem" }} className="min-h-[inherit]">
             {children}
           </main>
+          <Toaster />
           <Footer />
         </TanstackProvider>
+        <Analytics />
       </body>
     </html>
   );

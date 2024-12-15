@@ -30,7 +30,6 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
     queryFn: async () => {
       const res = await fetchFlowData("X - State/SSC", careerOption);
       setFlowData(res?.data);
-      console.log("res?.data", res?.data);
       return res?.data;
     },
     enabled: !!careerOption,
