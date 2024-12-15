@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "@/components/ui/toaster";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -46,6 +47,7 @@ export default function RootLayout({
           <Toaster />
           <Footer />
         </TanstackProvider>
+        <Analytics />
       </body>
     </html>
   );
