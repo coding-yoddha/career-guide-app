@@ -20,17 +20,10 @@ interface DataCardProps {
   };
 }
 
-// interface DataCardProps {
-//   careerOption: CareerOption;
-// }
-
 const DataCard: React.FC<DataCardProps> = ({ careerOption }) => {
   const router = useRouter();
   const [pageName, setPageName] = useState<string>("");
   const handleBtnClick = () => {
-    // if (pageName) {
-    //   router.push(`/${pageName}`);
-    // }
     router.push(`/career-options?careerName=${careerOption.redirectPageName}`);
   };
 
@@ -43,7 +36,7 @@ const DataCard: React.FC<DataCardProps> = ({ careerOption }) => {
   }, [careerOption?.redirectPageName]);
 
   return (
-    <div className="w-11/12 md:w-30 cursor-pointer">
+    <div className="w-full md:w-1/3 lg:w-1/3 xl:w-1/5 cursor-pointer p-4">
       <Card style={{ height: "100%" }}>
         <CardContent>
           <CardTitle className="mb-3 mt-2">{careerOption.name}</CardTitle>

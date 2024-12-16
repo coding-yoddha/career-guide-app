@@ -12,7 +12,7 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
   description,
 }) => {
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 sm:p-6 bg-white rounded-lg shadow-lg border border-gray-200">
+    <div className="max-w-md mx-auto mt-3 p-4 sm:p-6 bg-white rounded-lg shadow-lg border border-gray-200">
       <div className="flex items-center mb-2 sm:mb-4">
         <FontAwesomeIcon icon={faBell} className="text-yellow-500" />
         <h3 className="text-lg sm:text-xl font-semibold text-gray-800 ml-2">

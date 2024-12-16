@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 w-full bg-white py-2 md:rounded-b-lg shadow-lg z-50"
+      className="fixed top-0 left-0 w-full bg-[#f5f6fa] py-2 md:rounded-b-lg shadow-lg z-50"
       style={{ height: "3.5rem" }}
     >
       <div className="flex md:mr-2">
@@ -25,7 +25,12 @@ const Header = () => {
           style={{ cursor: "pointer" }}
         >
           <a href="/">
-            <Image src={appLogo} alt="app-logo" width={300} />
+            <Image
+              src={appLogo}
+              alt="app-logo"
+              className="h-[2rem]"
+              width={300}
+            />
           </a>
 
           <button
@@ -44,7 +49,7 @@ const Header = () => {
             href="/"
             className={`p-2 lg:px-4 md:mx-2 font-semibold rounded ${
               pathname === "/"
-                ? "bg-[#171717] text-white"
+                ? "bg-[#407bfe] text-white"
                 : "text-gray-600 hover:bg-gray-200 hover:text-gray-700"
             } transition-colors duration-300`}
           >
@@ -54,7 +59,7 @@ const Header = () => {
             href="/about"
             className={`p-2 lg:px-4 md:mx-2 font-semibold rounded ${
               pathname === "/about"
-                ? "bg-[#171717] text-white"
+                ? "bg-[#407bfe] text-white"
                 : "text-gray-600 hover:bg-gray-200 hover:text-gray-700"
             } transition-colors duration-300`}
           >
@@ -64,7 +69,7 @@ const Header = () => {
             href="/contact"
             className={`p-2 lg:px-4 md:mx-2 font-semibold rounded ${
               pathname === "/contact"
-                ? "bg-[#171717] text-white"
+                ? "bg-[#407bfe] text-white"
                 : "text-gray-600 hover:bg-gray-200 hover:text-gray-700"
             } transition-colors duration-300`}
           >
