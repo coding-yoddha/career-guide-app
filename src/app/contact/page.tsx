@@ -3,10 +3,7 @@ import mailIcon from "../../public/mail.png";
 
 const ContactPage = () => {
   return (
-    <div
-      className="bg-gray-50 min-h-screen flex flex-col justify-center py-12 px-6 lg:px-8 w-full"
-      style={{ marginTop: "3%" }}
-    >
+    <div className="bg-gray-50 min-h-screen flex flex-col justify-center py-12 px-6 lg:px-8 w-full">
       <h2 className="text-3xl font-bold text-center text-blue-600">
         Contact Us
       </h2>

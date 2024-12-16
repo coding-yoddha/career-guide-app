@@ -137,10 +137,10 @@ const DataDisplay: React.FC = () => {
             {/* Examples Section */}
             {education && education === BTech && (
               <section className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
                   The Engineers Behind Everyday Innovations
                 </h2>
-                <div className="space-y-4">
+                <div className="space-y-4 pt-8 pl-4">
                   {data?.realLifeExamples?.map((realLifeExample, index) => (
                     <div
                       key={index}
@@ -161,13 +161,13 @@ const DataDisplay: React.FC = () => {
             {/* Courses Section */}
             {data?.courses && data?.courses?.length && (
               <section className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
                   Courses
                 </h2>
-                <div className="space-y-6">
+                <div className="space-y-6 pt-8 pl-4">
                   {data.courses.map((course, index) => (
                     <div key={index}>
-                      <h3 className="text-lg font-bold text-gray-800 mb-2">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">
                         {course.name}
                       </h3>
                       <DynamicDescription data={course.description} />
@@ -192,10 +192,10 @@ const DataDisplay: React.FC = () => {
             {data?.resources && data?.resources?.length && (
               <>
                 <section className="mb-6">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50 ">
+                  <h2 className="text-2xl font-semibold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50 ">
                     Resources
                   </h2>
-                  <div className="space-y-4">
+                  <div className="space-y-4 pt-8 pl-4">
                     {data.resources.map((resource, index) => (
                       <li
                         key={index}
@@ -233,24 +233,23 @@ const DataDisplay: React.FC = () => {
             {/* Common Resources */}
             {data?.commonResources && data?.commonResources?.length && (
               <section className="mb-6">
-                <div className="flex flex-row items-center justify-start mb-4 text-2xl font-bold text-gray-900 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
+                <div className="flex flex-row items-center justify-start mb-4 text-2xl font-semibold text-gray-900 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
                   <h2>Common Resources</h2>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger>
                         <FontAwesomeIcon className="ml-2" icon={faInfoCircle} />
                       </TooltipTrigger>
-                      <TooltipContent>
-                        <span className="font-bold">Common resources</span>are
-                        not designed for one specific field. Instead, they offer
-                        content that can be useful for any subject or area of
-                        study.
+                      <TooltipContent className="w-64 h-32 p-4 bg-white text-black rounded shadow-lg font-normal">
+                        <span>Common resources </span>are not designed for one
+                        specific field. Instead, they offer content that can be
+                        useful for any subject or area of study.
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
                 </div>
 
-                <div className="flex flex-row flex-wrap gap-2">
+                <div className="flex flex-row flex-wrap gap-2 pt-8 pl-4">
                   {data.commonResources.map((commonResource, index) => (
                     <div
                       key={index}
@@ -288,7 +287,7 @@ const DataDisplay: React.FC = () => {
             {/* Other Options Section */}
             {data?.otherOptions && data?.otherOptions?.length && (
               <section className="mb-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6 shadow-md p-4 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-6 shadow-md p-4 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
                   Explore Alternative Pathways to Your Dream Career
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md">
@@ -300,7 +299,7 @@ const DataDisplay: React.FC = () => {
                 <p className="text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md">
                   Explore the options below to discover your possibilities{" "}
                 </p>
-                <ul className="space-y-4 mt-3">
+                <ul className="space-y-4 mt-3 pt-8 pl-4">
                   {data.otherOptions.map((option, index) => (
                     <li
                       key={index}

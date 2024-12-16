@@ -3,10 +3,7 @@ import goingUpIcon from "../../public/career-growth.svg";
 
 const AboutUs = () => {
   return (
-    <div
-      className="bg-gray-50 min-h-screen flex flex-col lg:flex-row justify-center py-12 px-6 lg:px-8 w-full"
-      style={{ marginTop: "3%" }}
-    >
+    <div className="bg-gray-50 min-h-screen flex flex-col lg:flex-row justify-center py-12 px-6 lg:px-8 w-full">
       <div className="max-w-2xl p-8 flex-1">
         <h2 className="text-3xl font-bold text-center text-blue-600">
           About Us

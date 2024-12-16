@@ -73,7 +73,7 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
       </div>
 
       <div className="flex justify-center px-4 sm:px-6 mt-6 mb-6">
-        <div className="w-full max-w-4xl h-[80vh] p-6 flex flex-col border border-gray-300 rounded-lg shadow-lg bg-white overflow-hidden">
+        <div className="w-full max-w-4xl h-[80vh] sm:p-6 flex flex-col border border-gray-300 rounded-lg shadow-lg bg-white overflow-hidden">
           <div className="flex-grow flex items-center justify-center relative">
             {isLoading ? (
               <p className="text-xl font-semibold text-gray-600">Loading...</p>
