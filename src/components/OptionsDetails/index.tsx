@@ -64,7 +64,7 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
 
   return (
     <>
-      {showComingSoon ? (
+      {!isLoading && showComingSoon ? (
         <ComingSoonPage />
       ) : (
         <div className="flex flex-col justify-start bg-gradient-to-b from-white to-blue-100 min-h-screen w-full">
