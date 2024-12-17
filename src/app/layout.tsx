@@ -8,7 +8,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import Header from "@/containers/header";
 import TanstackProvider from "@/providers/TanstackProvider";
 import Footer from "@/containers/footer";
-import Head from "next/head";
 
 // Font Awesome configuration
 config.autoAddCss = false;
@@ -24,10 +23,13 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata = {
-  title: "Agla Kadam",
+export const metadata: Metadata = {
+  title: {
+    default: "Agla Kadam",
+    template: "%s | Agla Kadam",
+  },
   description:
-    "Discover different career paths after 10th class. Get step-by-step guidance to pursue your dream career in engineering, medicine, arts, and more!.One stop destination to know what to choose after your 10th Standard",
+    "Discover different career paths after 10th class. Get step-by-step guidance to pursue your dream career in engineering, medicine, arts, and more! One-stop destination to know what to choose after your 10th Standard.",
   keywords: [
     "career guidance",
     "after 10th class",
@@ -43,6 +45,11 @@ export const metadata = {
       "Explore career options after 10th class and find your perfect career path with Agla Kadam.",
     type: "website",
     url: "https://aglakadam.com",
+  },
+  applicationName: "Agla Kadam",
+  metadataBase: new URL("https://aglakadam.com"),
+  alternates: {
+    canonical: "https://aglakadam.com",
   },
 };
 

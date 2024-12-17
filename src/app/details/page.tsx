@@ -100,8 +100,6 @@ const DataDisplay: React.FC = () => {
   const education = searchParams.get("careerPath");
   const role = searchParams.get("careerOption");
 
-  console.log("education", education);
-
   const { data, isError, isLoading } = useQuery<EducationDetails>({
     queryKey: ["getEducationDetails", role, education],
     queryFn: async () => {
@@ -136,27 +134,28 @@ const DataDisplay: React.FC = () => {
 
             {/* Examples Section */}
             {education && education === BTech && (
-              <section className="mb-12">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
-                  The Engineers Behind Everyday Innovations
-                </h2>
-                <div className="space-y-4 pt-8">
-                  {data?.realLifeExamples?.map((realLifeExample, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center p-4 border rounded-lg  hover:from-blue-100 hover:to-indigo-100 shadow-md transition-all duration-300 sm:w-2/4 w-[100%] border-l-4 border-l-customBorder2  transform hover:scale-105 hover:shadow-lg"
-                    >
-                      <span className="text-gray-800 font-semibold">
-                        {realLifeExample}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </section>
+              <>
+                <section className="mb-12">
+                  <h2 className="text-2xl font-semibold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
+                    The Engineers Behind Everyday Innovations
+                  </h2>
+                  <div className="space-y-4 pt-8">
+                    {data?.realLifeExamples?.map((realLifeExample, index) => (
+                      <div
+                        key={index}
+                        className="flex justify-between items-center p-4 border rounded-lg  hover:from-blue-100 hover:to-indigo-100 shadow-md transition-all duration-300 sm:w-2/4 w-[100%] border-l-4 border-l-customBorder2  transform hover:scale-105 hover:shadow-lg"
+                      >
+                        <span className="text-gray-800 font-semibold">
+                          {realLifeExample}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+                {/* Separator */}
+                <div className="border-t border-gray-300 my-8"></div>
+              </>
             )}
-
-            {/* Separator */}
-            <div className="border-t border-gray-300 my-8"></div>
 
             {/* Courses Section */}
             {data?.courses && data?.courses?.length && (
@@ -167,14 +166,16 @@ const DataDisplay: React.FC = () => {
                 <div className="space-y-6 pt-8 ">
                   {data.courses.map((course, index) => (
                     <div key={index}>
-                      <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2 pl-1">
                         {course.name}
                       </h3>
-                      <DynamicDescription data={course.description} />
+                      <p className="text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md">
+                        {course.description}
+                      </p>
                       {!(course.exams.length === 1 && course.exams === ".") && (
                         <p className="text-lg my-2">
                           <span className="font-extrabold text-gray-700">
-                            Exams:
+                            Exams:{" "}
                           </span>
                           {course.exams}
                         </p>
@@ -189,7 +190,7 @@ const DataDisplay: React.FC = () => {
             <div className="border-t border-gray-300 my-8"></div>
 
             {/* Resources Section */}
-            {data?.resources && data?.resources?.length && (
+            {data?.resources && data?.resources?.length ? (
               <>
                 <section className="mb-6">
                   <h2 className="text-2xl font-semibold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50 ">
@@ -228,61 +229,65 @@ const DataDisplay: React.FC = () => {
                 {/* Separator */}
                 <div className="border-t border-gray-300 my-8"></div>
               </>
-            )}
+            ) : null}
 
             {/* Common Resources */}
-            {data?.commonResources && data?.commonResources?.length && (
-              <section className="mb-6">
-                <div className="flex flex-row items-center justify-start mb-4 text-2xl font-semibold text-gray-900 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
-                  <h2>Common Resources</h2>
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <FontAwesomeIcon className="ml-2" icon={faInfoCircle} />
-                      </TooltipTrigger>
-                      <TooltipContent className="w-64 h-32 p-4 bg-white text-black rounded shadow-lg font-normal">
-                        <span>Common resources </span>are not designed for one
-                        specific field. Instead, they offer content that can be
-                        useful for any subject or area of study.
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </div>
+            {data?.commonResources && data?.commonResources?.length ? (
+              <>
+                <section className="mb-6">
+                  <div className="flex flex-row items-center justify-start mb-4 text-2xl font-semibold text-gray-900 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
+                    <h2>Common Resources</h2>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <FontAwesomeIcon
+                            className="ml-2"
+                            icon={faInfoCircle}
+                          />
+                        </TooltipTrigger>
+                        <TooltipContent className="w-64 h-32 p-4 bg-white text-black rounded shadow-lg font-normal">
+                          <span>Common resources </span>are not designed for one
+                          specific field. Instead, they offer content that can
+                          be useful for any subject or area of study.
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
 
-                <div className="flex flex-row flex-wrap gap-2 pt-8 ">
-                  {data.commonResources.map((commonResource, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center sm:w-[48%] w-[100%] p-4 border rounded-lg bg-gray-50/80  shadow-sm transition-all duration-300  border-l-4 border-l-customBorder1"
-                    >
-                      <span className="text-gray-700 font-semibold">
-                        {commonResource.name}
-                      </span>
-                      <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <a
-                              href={commonResource.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold transition-colors duration-200"
-                            >
-                              view
-                            </a>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            Click here to open the resource in a new tab.
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* Separator */}
-            <div className="border-t border-gray-300 my-8"></div>
+                  <div className="flex flex-row flex-wrap gap-2 pt-8 ">
+                    {data.commonResources.map((commonResource, index) => (
+                      <div
+                        key={index}
+                        className="flex justify-between items-center sm:w-[48%] w-[100%] p-4 border rounded-lg bg-gray-50/80  shadow-sm transition-all duration-300  border-l-4 border-l-customBorder1"
+                      >
+                        <span className="text-gray-700 font-semibold">
+                          {commonResource.name}
+                        </span>
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <a
+                                href={commonResource.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold transition-colors duration-200"
+                              >
+                                view
+                              </a>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              Click here to open the resource in a new tab.
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+                {/* Separator */}
+                <div className="border-t border-gray-300 my-8"></div>
+              </>
+            ) : null}
 
             {/* Other Options Section */}
             {data?.otherOptions && data?.otherOptions?.length && (
