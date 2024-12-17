@@ -46,7 +46,7 @@ const Home: React.FC = async () => {
               style={{ color: "#1f2937", letterSpacing: "-0.02em" }}
             >
               Your next step - Your {""}
-              <span className="font-extrabold">Agla Kadam</span>
+              <span className="font-extrabold text-[#407bfe]">Agla Kadam</span>
             </h1>
             <p
               className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-500 mt-1 max-w-sm sm:max-w-md md:max-w-lg font-medium"

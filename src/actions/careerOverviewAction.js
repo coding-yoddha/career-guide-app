@@ -2,7 +2,7 @@
 
 import connectDB from "../../config/database";
 import CareerOverview from "@/models/careerOverview";
-import engineeringIcon from "../public/developer.png";
+
 import fs from "fs";
 
 export async function getCareers() {
@@ -23,19 +23,19 @@ export async function getCareers() {
     //   console.log("saved successfully");
     const careers = await CareerOverview.find().lean(); // Fetch plain JavaScript objects
 
-      // Convert Buffer to Base64 strings for image display
-      const formattedCareers = careers.map((career) => ({
-        _id: career._id.toString(), // Convert _id to a string
-        name: career.name,
-        description: career.description,
-        redirectPageName: career.redirectPageName,
-        image: career.image
-          ? {
-              data: career.image.data.toString('base64'), // Convert Buffer to Base64 if present
-              contentType: career.image.contentType,
-            }
-          : undefined, // If image is not present, set it as undefined
-      }));
+    // Convert Buffer to Base64 strings for image display
+    const formattedCareers = careers.map((career) => ({
+      _id: career._id.toString(), // Convert _id to a string
+      name: career.name,
+      description: career.description,
+      redirectPageName: career.redirectPageName,
+      image: career.image
+        ? {
+            data: career.image.data.toString("base64"), // Convert Buffer to Base64 if present
+            contentType: career.image.contentType,
+          }
+        : undefined, // If image is not present, set it as undefined
+    }));
     return { data: formattedCareers };
   } catch (error) {
     console.log("error: ", error);
