@@ -24,10 +24,26 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Agla Kadam",
   description:
     "Discover different career paths after 10th class. Get step-by-step guidance to pursue your dream career in engineering, medicine, arts, and more!.One stop destination to know what to choose after your 10th Standard",
+  keywords: [
+    "career guidance",
+    "after 10th class",
+    "career options",
+    "engineering",
+    "medicine",
+    "arts",
+    "law",
+  ],
+  openGraph: {
+    title: "Agla Kadam - Your Roadmap to a Bright Future",
+    description:
+      "Explore career options after 10th class and find your perfect career path with Agla Kadam.",
+    type: "website",
+    url: "https://aglakadam.com",
+  },
 };
 
 export default function RootLayout({
