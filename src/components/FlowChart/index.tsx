@@ -61,17 +61,6 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
         </p>
       </div>
 
-      <div className="px-4 sm:px-6 mt-4 mb-4">
-        <span className="block font-semibold text-gray-600 bg-gray-100 border-l-4 border-yellow-400 p-4 rounded-md">
-          Since you're looking for career options after 10th and pursue your
-          dream profession, some steps in your journey (like
-          <span className="font-extrabold">X - State/SSC</span>,
-          <span className="font-extrabold">Software Engineer</span>) are
-          starting and ending points that don't need clicking. The chart focuses
-          on helping you explore the paths that lead to your dream career.
-        </span>
-      </div>
-
       <div className="flex justify-center px-4 sm:px-6 mt-6 mb-6">
         <div className="w-full max-w-4xl h-[80vh] sm:p-6 flex flex-col border border-gray-300 rounded-lg shadow-lg bg-white overflow-hidden">
           <div className="flex-grow flex items-center justify-center relative">
@@ -98,6 +87,16 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
             )}
           </div>
         </div>
+      </div>
+      <div className="px-4 sm:px-6 mt-4 mb-4">
+        <span className="block font-semibold text-gray-600 bg-gray-100 border-l-4 border-yellow-400 p-4 rounded-md">
+          Since you're looking for career options after 10th and pursue your
+          dream profession, some steps in your journey (like
+          <span className="font-extrabold">X - State/SSC</span>,
+          <span className="font-extrabold">Software Engineer</span>) are
+          starting and ending points that don't need clicking. The chart focuses
+          on helping you explore the paths that lead to your dream career.
+        </span>
       </div>
     </div>
   );

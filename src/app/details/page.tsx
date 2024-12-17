@@ -140,7 +140,7 @@ const DataDisplay: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
                   The Engineers Behind Everyday Innovations
                 </h2>
-                <div className="space-y-4 pt-8 pl-4">
+                <div className="space-y-4 pt-8">
                   {data?.realLifeExamples?.map((realLifeExample, index) => (
                     <div
                       key={index}
@@ -164,7 +164,7 @@ const DataDisplay: React.FC = () => {
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50">
                   Courses
                 </h2>
-                <div className="space-y-6 pt-8 pl-4">
+                <div className="space-y-6 pt-8 ">
                   {data.courses.map((course, index) => (
                     <div key={index}>
                       <h3 className="text-lg font-semibold text-gray-800 mb-2">
@@ -195,7 +195,7 @@ const DataDisplay: React.FC = () => {
                   <h2 className="text-2xl font-semibold text-gray-900 mb-4 shadow-md p-3 rounded-lg bg-gradient-to-r from-blue-100 to-blue-50 ">
                     Resources
                   </h2>
-                  <div className="space-y-4 pt-8 pl-4">
+                  <div className="space-y-4 pt-8 ">
                     {data.resources.map((resource, index) => (
                       <li
                         key={index}
@@ -249,7 +249,7 @@ const DataDisplay: React.FC = () => {
                   </TooltipProvider>
                 </div>
 
-                <div className="flex flex-row flex-wrap gap-2 pt-8 pl-4">
+                <div className="flex flex-row flex-wrap gap-2 pt-8 ">
                   {data.commonResources.map((commonResource, index) => (
                     <div
                       key={index}
@@ -299,7 +299,7 @@ const DataDisplay: React.FC = () => {
                 <p className="text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md">
                   Explore the options below to discover your possibilities{" "}
                 </p>
-                <ul className="space-y-4 mt-3 pt-8 pl-4">
+                <ul className="space-y-4 mt-3 pt-8 ">
                   {data.otherOptions.map((option, index) => (
                     <li
                       key={index}
