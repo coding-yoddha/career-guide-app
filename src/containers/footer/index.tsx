@@ -18,7 +18,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/about"
                   className="hover:text-pink-400 transition-all duration-300 flex items-center"
                 >
                   <span className="mr-2">➤</span> Our Team
