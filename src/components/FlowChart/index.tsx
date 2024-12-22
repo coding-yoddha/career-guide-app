@@ -79,6 +79,23 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
         </div>
       </div>
 
+      <div className="bg-gradient-to-r from-blue-400 to-blue-600 py-12 px-4 sm:px-6 mt-6 mb-6 text-center rounded-lg shadow-lg mx-auto w-[92%] sm:w-[75%]">
+        <p className="text-xl sm:text-2xl font-semibold text-white leading-relaxed mb-6">
+          As of now, the flow chart primarily focuses on the Secondary School
+          education systems of Telangana and Andhra Pradesh. However, this
+          should not limit your exploration. It provides a broad overview of the
+          opportunities available in various careers, helping you visualize the
+          path ahead and make informed choices about your future.
+        </p>
+
+        <p className="text-lg sm:text-xl text-gray-200 leading-relaxed max-w-3xl mx-auto">
+          While our focus is on these specific education boards, we encourage
+          you to use this as a foundation to explore the vast opportunities
+          available, no matter your educational background. Your future is yours
+          to shape!
+        </p>
+      </div>
+
       <div className="flex justify-center px-4 sm:px-6 mt-6 mb-6">
         <div className="w-full max-w-4xl h-[80vh] sm:p-6 flex flex-col border border-gray-300 rounded-lg shadow-lg bg-white overflow-hidden">
           <div className="flex-grow flex items-center justify-center relative">
