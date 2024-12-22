@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchEducationDetails } from "@/utils/apiHelpers";
 import Loader from "@/components/Loader";
 import { BTech } from "@/constants";
-import ComingSoonPage from "@/components/ComingSoon"
+import ComingSoonPage from "@/components/ComingSoon";
 
 interface Course {
   name: string;
@@ -46,24 +46,13 @@ interface EducationDetails {
   realLifeExamples: string[];
 }
 
-const DynamicDescription: React.FC<Description> = ({ data }) => {
+interface Description {
+  data: string;
+  customClass?: string; // Optional prop for custom styles
+}
+
+const DynamicDescription: React.FC<Description> = ({ data, customClass }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 640); // `sm` breakpoint in Tailwind (default is 640px)
-    };
-
-    // Check on component mount
-    handleResize();
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Clean up event listener on component unmount
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
@@ -72,23 +61,15 @@ const DynamicDescription: React.FC<Description> = ({ data }) => {
   return (
     <>
       <p
-        className={`text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md border-l-4 border-l-customBorder1 ${
-          isExpanded ? "" : "sm:line-clamp-none line-clamp-4"
-        }`}
-        style={{
-          display: "-webkit-box",
-          WebkitBoxOrient: "vertical",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          WebkitLineClamp: isMobile && !isExpanded ? 6 : "none",
-        }}
+        className={`text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md ${
+          isExpanded ? "" : "line-clamp-4"
+        } ${customClass ?? ""}`} // Apply custom class if provided
       >
         {data}
       </p>
-      {/* Show the button only on mobile screens */}
       <button
         onClick={toggleExpanded}
-        className="mt-2 text-blue-600 hover:text-blue-800 font-medium sm:hidden"
+        className="mt-2 text-blue-600 hover:text-blue-800 font-medium"
       >
         {isExpanded ? "Read Less" : "Read More"}
       </button>
@@ -97,8 +78,7 @@ const DynamicDescription: React.FC<Description> = ({ data }) => {
 };
 
 const DataDisplay: React.FC = () => {
-  const searchParams = useSearchParams(); 
-  const [showUIWithData, setShowUIWithData] = useState(false);
+  const searchParams = useSearchParams();
   const education = searchParams.get("careerPath");
   const role = searchParams.get("careerOption");
 
@@ -128,7 +108,10 @@ const DataDisplay: React.FC = () => {
           <div className="max-w-7xl w-full bg-white shadow-xl rounded-lg p-8">
             {/* Description Section */}
             <section className="mb-12">
-              <DynamicDescription data={data.description} />
+              <DynamicDescription
+                data={data.description}
+                customClass="border-l-4 border-l-customBorder1"
+              />
             </section>
 
             {/* Separator */}
@@ -175,9 +158,10 @@ const DataDisplay: React.FC = () => {
                           {course.name}
                         </h3>
 
-                        <p className="text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md border-2 border-gray-800">
-                          {course.description}
-                        </p>
+                        <DynamicDescription
+                          data={course.description}
+                          customClass="border-2 border-gray-800"
+                        />
 
                         {!(
                           course.exams.length === 1 && course.exams === "."
@@ -340,7 +324,9 @@ const DataDisplay: React.FC = () => {
             )}
           </div>
         </div>
-      ) : <ComingSoonPage/>}
+      ) : (
+        <ComingSoonPage />
+      )}
     </>
   );
 };
