@@ -86,16 +86,16 @@ const Header = () => {
         {/* Mobile Navigation */}
         <nav className="flex flex-col space-y-4 pl-6 pr-4">
           {[
-            { name: "Home", icon: faHouse },
-            { name: "About", icon: faUser },
-            { name: "Contact", icon: faEnvelope },
+            { name: "Home", icon: faHouse, path: "/" },
+            { name: "About", icon: faUser, path: "/about" },
+            { name: "Contact", icon: faEnvelope, path: "/contact" },
           ].map((item) => (
             <a
               key={item.name}
-              href={`/${item.name.toLowerCase()}`}
+              href={item.path}
               className={`flex items-center gap-4 py-3 px-4 rounded-lg text-lg font-semibold  transition-all duration-300
         ${
-          pathname === `/${item.name.toLowerCase()}`
+          pathname === item.path
             ? "text-white bg-gradient-to-r from-[#407bfe] to-[#5ca8ff]"
             : "text-gray-700 hover:text-[#407bfe] hover:bg-gray-100"
         }`}
@@ -106,9 +106,7 @@ const Header = () => {
                 <FontAwesomeIcon
                   icon={item.icon}
                   className={`${
-                    pathname === `/${item.name.toLowerCase()}`
-                      ? "text-white"
-                      : "text-[#407bfe]"
+                    pathname === item.path ? "text-white" : "text-[#407bfe]"
                   }`}
                 />
               </span>
