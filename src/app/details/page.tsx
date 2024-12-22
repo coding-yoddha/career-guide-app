@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchEducationDetails } from "@/utils/apiHelpers";
 import Loader from "@/components/Loader";
 import { BTech } from "@/constants";
+import ComingSoonPage from "@/components/ComingSoon"
 
 interface Course {
   name: string;
@@ -96,7 +97,8 @@ const DynamicDescription: React.FC<Description> = ({ data }) => {
 };
 
 const DataDisplay: React.FC = () => {
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams(); 
+  const [showUIWithData, setShowUIWithData] = useState(false);
   const education = searchParams.get("careerPath");
   const role = searchParams.get("careerOption");
 
@@ -116,7 +118,7 @@ const DataDisplay: React.FC = () => {
 
   return (
     <>
-      {data ? (
+      {data && Object.keys(data).length !== 0 ? (
         <div className="min-h-screen font-medium bg-gray-100 flex flex-col items-center py-12 px-4">
           {/* Title */}
           <h1 className="text-4xl font-extrabold text-gray-600 text-center mb-8">
@@ -338,7 +340,7 @@ const DataDisplay: React.FC = () => {
             )}
           </div>
         </div>
-      ) : null}
+      ) : <ComingSoonPage/>}
     </>
   );
 };
