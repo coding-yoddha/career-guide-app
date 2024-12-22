@@ -103,19 +103,21 @@ const Home: React.FC = async () => {
             <DataCard careerOption={careerOption} key={careerOption._id} />
           ))}
         </div>
-        <div className='mt-4 mb-2 mx-auto w-[90%] bg-yellow-200 p-6 rounded-lg shadow-lg'>
-          <h3 className='text-lg font-semibold text-orange-900 mb-4 text-center'>
+        <div className="mt-4 mb-2 mx-auto w-[90%] bg-gradient-to-r from-[#6a4c93] to-[#9b69e9] p-6 rounded-lg shadow-lg">
+          <h3 className="text-lg font-semibold text-white mb-4 text-center">
             We’re Always Improving!
           </h3>
-          <p className='text-orange-800 text-center mb-4'>
+          <p className="text-white text-center mb-4">
             If you believe there's an additional field we could include or if
             there's a career path you'd like to see that isn't currently listed,
             please feel free to reach out. We value your input and will make
             every effort to incorporate it as quickly as possible.
           </p>
-          <div className='text-center'>
-            <a href='/contact'
-              className='px-4 py-2 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-white hover:!text-black transition duration-200 cursor-pointer'>
+          <div className="text-center">
+            <a
+              href="/contact"
+              className="px-4 py-2 font-semibold rounded-lg shadow-md bg-white text-black transition duration-300 transform hover:scale-105  hover:shadow-lg cursor-pointer"
+            >
               Drop your thoughts ❤️
             </a>
           </div>
