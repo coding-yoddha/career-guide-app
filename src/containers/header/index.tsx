@@ -20,19 +20,19 @@ const Header = () => {
   const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
 
   return (
-    <nav
-      className="fixed top-0 left-0 w-full bg-white py-2 shadow-lg z-50 border-t-2"
-      style={{ height: "3.5rem" }}
-    >
+    <nav className="fixed top-0 left-0 w-full bg-white py-2 shadow-lg z-50 border-t-2">
       {/* Header Content */}
       <div className="flex items-center justify-between px-4 md:px-6">
         {/* Logo and Title */}
         <a className="flex items-center gap-2" href="/">
-          <Image src={appLogo} alt="Logo" className="w-8 h-8 md:w-10 md:h-10" />
+          <Image
+            src={appLogo}
+            alt="Logo"
+            className="w-8 h-8 md:w-10 md:h-10"
+            priority
+          />
           <h1
-            className="text-2xl md:text-3xl font-extrabold bg-gradient-to-r 
-              from-[#407bfe] to-[#5ca8ff] text-transparent bg-clip-text 
-              tracking-tight whitespace-nowrap"
+            className="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-[#407bfe] to-[#5ca8ff] text-transparent bg-clip-text tracking-tight whitespace-nowrap"
             style={{ fontFamily: '"Inter", sans-serif' }}
           >
             Agla Kadam
@@ -43,6 +43,7 @@ const Header = () => {
         <button
           className="block md:hidden text-[#407bfe] text-2xl"
           onClick={toggleSidebar}
+          aria-label="Open Sidebar"
         >
           <FontAwesomeIcon icon={faBars} />
         </button>
@@ -67,10 +68,9 @@ const Header = () => {
 
       {/* Sidebar (Mobile Menu) */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform 
-          ${
-            isSidebarOpen ? "translate-x-0" : "translate-x-full"
-          } transition-transform duration-300 ease-in-out z-50`}
+        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform ${
+          isSidebarOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out z-50`}
       >
         {/* Close Button */}
         <div className="flex justify-end p-4">
@@ -93,12 +93,11 @@ const Header = () => {
             <a
               key={item.name}
               href={item.path}
-              className={`flex items-center gap-4 py-3 px-4 rounded-lg text-lg font-semibold  transition-all duration-300
-        ${
-          pathname === item.path
-            ? "text-white bg-gradient-to-r from-[#407bfe] to-[#5ca8ff]"
-            : "text-gray-700 hover:text-[#407bfe] hover:bg-gray-100"
-        }`}
+              className={`flex items-center gap-4 py-3 px-4 rounded-lg text-lg font-semibold transition-all duration-300 ${
+                pathname === item.path
+                  ? "text-white bg-gradient-to-r from-[#407bfe] to-[#5ca8ff]"
+                  : "text-gray-700 hover:text-[#407bfe] hover:bg-gray-100"
+              }`}
               onClick={toggleSidebar}
             >
               {/* FontAwesome Icon */}

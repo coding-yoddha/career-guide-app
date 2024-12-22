@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ReactFlow, Controls, Background, Node, Edge } from "@xyflow/react";
+import { useState } from "react";
+import { ReactFlow, Node, Edge } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { useRouter } from "next/navigation";
 import { fetchFlowData } from "@/utils/apiHelpers";
@@ -61,24 +61,6 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
         </p>
       </div>
 
-      <div className="px-4 sm:px-6 mt-6 mb-6">
-        <div className="bg-gradient-to-r from-[#34a3a7] to-[#66c7c1] p-6 rounded-lg shadow-2xl">
-          <span className="block text-xl text-white font-semibold mb-3">
-            <strong>CBSE Students, Don't Worry!</strong>
-          </span>
-          <p className="text-white">
-            If you're studying under the CBSE board, think of SSC's Intermediate
-            as equivalent to your Class 11th and 12th. You can start exploring
-            the career options available to you right now!
-          </p>
-          <p className="mt-4 text-white">
-            We understand your specific needs, and we're currently working on
-            adding CBSE-specific adjustments to the app. Stay tuned, as we'll
-            soon offer personalized guidance for your journey!
-          </p>
-        </div>
-      </div>
-
       <div className="bg-gradient-to-r from-blue-400 to-blue-600 py-12 px-4 sm:px-6 mt-6 mb-6 text-center rounded-lg shadow-lg mx-auto w-[92%] sm:w-[75%]">
         <p className="text-xl sm:text-2xl font-semibold text-white leading-relaxed mb-6">
           As of now, the flow chart primarily focuses on the Secondary School
@@ -94,6 +76,24 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
           available, no matter your educational background. Your future is yours
           to shape!
         </p>
+      </div>
+
+      <div className="px-4 sm:px-6 mt-6 mb-6 mx-auto w-[92%] sm:w-[75%]">
+        <div className="bg-gradient-to-r from-[#34a3a7] to-[#66c7c1] p-6 rounded-lg shadow-2xl">
+          <span className="block text-xl text-white font-semibold mb-3">
+            <strong>Are you a CBSE student? Don't worry!</strong>
+          </span>
+          <p className="text-white">
+            If you're studying under the CBSE board, think of SSC's Intermediate
+            as equivalent to your Class 11th and 12th. You can start exploring
+            the career options available to you right now!
+          </p>
+          <p className="mt-4 text-white">
+            We understand your specific needs, and we're currently working on
+            adding CBSE-specific adjustments to the app. Stay tuned, as we'll
+            soon offer personalized guidance for your journey!
+          </p>
+        </div>
       </div>
 
       <div className="flex justify-center px-4 sm:px-6 mt-6 mb-6">
