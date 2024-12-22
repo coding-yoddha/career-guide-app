@@ -47,7 +47,7 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
 
   return (
     <div>
-      <h1 className="text-3xl font-extrabold text-gray-600 mb-4 mt-3 text-center">
+      <h1 className="text-3xl font-extrabold text-gray-600 mb-4 mt-3 text-center ml-auto mr-auto">
         Career Roadmap
       </h1>
       <div className="px-4 sm:px-6 text-center">
@@ -59,6 +59,24 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
         <p className="text-md text-gray-500">
           Not sure what to do? Just tap the chart nodes to dive deeper!
         </p>
+      </div>
+
+      <div className="px-4 sm:px-6 mt-6 mb-6">
+        <div className="bg-gradient-to-r from-[#34a3a7] to-[#66c7c1] p-6 rounded-lg shadow-2xl">
+          <span className="block text-xl text-white font-semibold mb-3">
+            <strong>CBSE Students, Don't Worry!</strong>
+          </span>
+          <p className="text-white">
+            If you're studying under the CBSE board, think of SSC's Intermediate
+            as equivalent to your Class 11th and 12th. You can start exploring
+            the career options available to you right now!
+          </p>
+          <p className="mt-4 text-white">
+            We understand your specific needs, and we're currently working on
+            adding CBSE-specific adjustments to the app. Stay tuned, as we'll
+            soon offer personalized guidance for your journey!
+          </p>
+        </div>
       </div>
 
       <div className="flex justify-center px-4 sm:px-6 mt-6 mb-6">
@@ -92,10 +110,10 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
         <span className="block font-semibold text-gray-600 bg-gray-100 border-l-4 border-yellow-400 p-4 rounded-md">
           Since you're looking for career options after 10th and pursue your
           dream profession, some steps in your journey (like
-          <span className="font-extrabold">X - State/SSC</span>,
-          <span className="font-extrabold">Software Engineer</span>) are
-          starting and ending points that don't need clicking. The chart focuses
-          on helping you explore the paths that lead to your dream career.
+          <span className="font-extrabold">{` X - State/SSC`}</span>,
+          <span className="font-extrabold">{careerOption}</span>) are starting
+          and ending points that don't need clicking. The chart focuses on
+          helping you explore the paths that lead to your dream career.
         </span>
       </div>
     </div>
