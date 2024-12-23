@@ -76,7 +76,6 @@ function convertPathsToNodes(paths, start, end) {
   }
 
   const nodeArray = Array.from(uniqueNodes.values());
-  console.log(nodeArray, edges);
   return { nodes: nodeArray, edges };
 }
 
@@ -102,22 +101,20 @@ function generateFlowChartData(start, end, nodes) {
 
   // Start the DFS from the given starting node
   dfs([start], start);
-  console.log(paths);
   const result = convertPathsToNodes(paths, start, end);
-  console.log(JSON.stringify(result));
   return result;
 }
 
 export async function GET(req) {
   try {
     await connectToDB();
-    const data = await AcademicsMap.find({});
+    const { searchParams } = new URL(req.url);
+    const start = searchParams.get("start");
+    const end = searchParams.get("end");
+    const career = searchParams.get("career");
+    const data = await AcademicsMap.find({career});
 
     if (data) {
-      const { searchParams } = new URL(req.url);
-      const start = searchParams.get("start");
-      const end = searchParams.get("end");
-      console.log(start, end);
       return NextResponse.json({
         success: true,
         data: generateFlowChartData(start, end, data),

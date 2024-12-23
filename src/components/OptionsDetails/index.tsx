@@ -43,9 +43,9 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
     queryKey: ["getCareerOptions"],
     queryFn: async () => {
       const res = await fetchCareerOptions(career);
-      setOptionData(res?.data);
-      setFilteredData(res?.data);
-      !res.data.length ? setShowComingSoon(true) : setShowComingSoon(false);
+      setOptionData(res?.data?.options);
+      setFilteredData(res?.data?.options);
+      !res.data.options.length ? setShowComingSoon(true) : setShowComingSoon(false);
       return res?.data;
     },
     enabled: !!career,
@@ -143,7 +143,7 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
                     <Button
                       onClick={() => {
                         router.push(
-                          `/career-options/flow-chart?careerOption=${card.choice}`
+                          `/career-options/flow-chart?career=${career}&careerOption=${card.choice}`
                         );
                       }}
                       className="bg-[#407bfe] text-white px-4 py-2 rounded-md"

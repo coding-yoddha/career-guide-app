@@ -1,6 +1,7 @@
 import connectToDB from "../../../../config/database";
 import { NextResponse } from "next/server";
 import CareerOption from "../../../models/careerOption";
+import CareerOverview from "@/models/careerOverview";
 export const dynamic = "force-dynamic"; // Ensure dynamic rendering
 
 export async function GET(req) {
@@ -8,12 +9,16 @@ export async function GET(req) {
     await connectToDB();
     const { searchParams } = new URL(req.url);
     const option = searchParams.get("option");
+    const careerOverview = await CareerOverview.find({ redirectPageName: option });
     const careerOptions = await CareerOption.find({ career: option });
-
+    const result = {
+      description: careerOverview[0]?.description,
+      options: careerOptions
+    }
     if (careerOptions) {
       return NextResponse.json({
         success: true,
-        data: careerOptions,
+        data: result,
       });
     } else {
       return NextResponse.json({

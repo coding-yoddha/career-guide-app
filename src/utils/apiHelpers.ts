@@ -1,5 +1,5 @@
-const fetchFlowData = async (start: string | null, end: string | null) => {
-  const res = await fetch(`/api/getFlows?start=${start}&end=${end}`, {
+const fetchFlowData = async (start: string | null, end: string | null, career: string | null) => {
+  const res = await fetch(`/api/getFlows?start=${start}&end=${end}&career=${career}`, {
     method: "GET",
   });
   if (!res.ok) {
