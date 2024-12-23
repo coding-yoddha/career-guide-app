@@ -10,6 +10,10 @@ const academicsMapSchema = new Schema(
       type: String,
       required: true,
     },
+    career: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
