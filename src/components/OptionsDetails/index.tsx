@@ -95,19 +95,23 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
     <>
       {!isLoading && showComingSoon ? (
         <ComingSoonPage />
-      ) : !isLoading ? (
+      ) : (
         <div className="flex flex-col bg-gradient-to-b from-white to-blue-100 min-h-screen w-full px-4 sm:px-10">
           {/* Render description if available */}
-          {description && (
-            <div className="border-l-4 border-blue-500 pl-6 py-4 bg-gradient-to-r from-blue-50 to-white rounded-md shadow-sm my-6">
+          {
+            <div className="border-l-4 border-blue-500 pl-6 py-4  rounded-md shadow-sm my-6">
               <h2 className="text-2xl sm:text-2xl font-semibold text-gray-800 mb-3">
                 About This Career
               </h2>
-              <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-                {description}
-              </p>
+              {isLoading ? (
+                <Skeleton className="h-8 w-2/3 rounded-lg" />
+              ) : (
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                  {description}
+                </p>
+              )}
             </div>
-          )}
+          }
 
           {/* Search bar and heading */}
           <div className="flex flex-col sm:flex-col justify-center gap-6 mb-6">
@@ -203,8 +207,6 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
             </div>
           )}
         </div>
-      ) : (
-        <Loader />
       )}
     </>
   );
