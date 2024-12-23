@@ -157,7 +157,7 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
           </div>
 
           {filteredData.length > 0 && (
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-4 mt-3">
               <Pagination>
                 <PaginationContent>
                   <PaginationPrevious
