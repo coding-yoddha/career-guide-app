@@ -74,9 +74,7 @@ export default function RootLayout({
         </TanstackProvider>
         <Analytics />
       </body>
-      <GoogleAnalytics
-        gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""}
-      />
+      <GoogleAnalytics gaId={"G-5DE6EWN6PT"} />
     </html>
   );
 }
