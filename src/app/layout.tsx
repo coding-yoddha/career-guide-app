@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "@/components/ui/toaster";
 import localFont from "next/font/local";
@@ -73,6 +74,7 @@ export default function RootLayout({
         </TanstackProvider>
         <Analytics />
       </body>
+      <GoogleAnalytics gaId={"G-5DE6EWN6PT"} />
     </html>
   );
 }

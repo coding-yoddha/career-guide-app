@@ -155,7 +155,15 @@ const DataDisplay: React.FC = () => {
                     Courses
                   </h2>
 
-                  <div className="space-y-6 pt-8 ">
+                  {data.courses.length > 1 && (
+                    <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-md shadow-md text-blue-800 text-sm font-semibold">
+                      You can choose any of the following courses to achieve
+                      your dream career. Explore and decide what works best for
+                      you!
+                    </div>
+                  )}
+
+                  <div className="space-y-6 pt-8">
                     {data.courses.map((course, index) => (
                       <div key={index}>
                         <h3 className="text-lg font-semibold text-white mb-4 inline-block bg-gray-800 shadow-md rounded-md px-5 py-2 border border-white">
