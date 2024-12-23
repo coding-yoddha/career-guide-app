@@ -92,6 +92,14 @@ const Home: React.FC = async () => {
           </div>
         </section>
 
+        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md mb-6 w-full sm:w-auto text-center mt-4">
+          <p className="text-sm sm:text-base">
+            <strong>Note:</strong> For the best experience, we recommend using
+            this app in
+            <span className="font-semibold"> desktop mode</span>.
+          </p>
+        </div>
+
         <NotificationCard
           title={" Exciting Updates Coming Soon!"}
           description={
@@ -122,14 +130,6 @@ const Home: React.FC = async () => {
               Drop your thoughts ❤️
             </a>
           </div>
-        </div>
-
-        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md mb-6 w-full sm:w-auto text-center mt-4">
-          <p className="text-sm sm:text-base">
-            <strong>Note:</strong> For the best experience, we recommend using
-            this app in
-            <span className="font-semibold"> desktop mode</span>.
-          </p>
         </div>
       </div>
     </div>
