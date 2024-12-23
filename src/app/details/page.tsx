@@ -62,14 +62,14 @@ const DynamicDescription: React.FC<Description> = ({ data, customClass }) => {
     <>
       <p
         className={`text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md ${
-          isExpanded ? "" : "line-clamp-4"
-        } ${customClass ?? ""}`} // Apply custom class if provided
+          isExpanded ? "" : "sm:line-clamp-none line-clamp-4"
+        } ${customClass ?? ""}`}
       >
         {data}
       </p>
       <button
         onClick={toggleExpanded}
-        className="mt-2 text-blue-600 hover:text-blue-800 font-medium"
+        className="mt-2 text-blue-600 hover:text-blue-800 font-medium sm:hidden"
       >
         {isExpanded ? "Read Less" : "Read More"}
       </button>
@@ -81,6 +81,10 @@ const DataDisplay: React.FC = () => {
   const searchParams = useSearchParams();
   const education = searchParams.get("careerPath");
   const role = searchParams.get("careerOption");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const { data, isError, isLoading } = useQuery<EducationDetails>({
     queryKey: ["getEducationDetails", role, education],

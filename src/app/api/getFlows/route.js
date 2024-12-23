@@ -35,10 +35,23 @@ function convertPathsToNodes(paths, start, end) {
           position: { x: currentXOffset, y: index * yOffset },
           type: index === 0 ? "input" : "default",
           style: {
-            backgroundColor: node === start ? "#74b1e3" : "#ffcccb",
-            color: "#333",
-            border: "2px solid " + (node === start ? "#1285e3" : "#ff7f7f"),
+            background:
+              node === start || node === end
+                ? "linear-gradient(to bottom, #f2f2f2, #d9d9d9)" // Neutral gray-to-white for non-clickable
+                : "linear-gradient(to bottom, #c084fc, #f472b6)", // Soft purple-to-pink for clickable
+
+            color: node === start || node === end ? "#607d8b" : "#ffffff", // Subtle text for non-clickable
+            border:
+              "2px solid " +
+              (node === start || node === end ? "#bcbcbc" : "#c084fc"),
             cursor: node === start || node === end ? "not-allowed" : "pointer",
+            boxShadow:
+              node === start || node === end
+                ? "none"
+                : "0px 8px 16px rgba(0, 0, 0, 0.2)",
+            borderRadius: "8px",
+            padding: "10px",
+            textAlign: "center",
           },
         });
 

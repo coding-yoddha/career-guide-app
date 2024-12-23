@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "../ui/button";
@@ -34,24 +34,31 @@ const CARDS_PER_PAGE = 5;
 const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
   const router = useRouter();
   const [optionData, setOptionData] = useState<Card[]>([]);
+  const [filteredData, setFilteredData] = useState<Card[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [showComingSoon, setShowComingSoon] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const { isError, isLoading } = useQuery({
     queryKey: ["getCareerOptions"],
     queryFn: async () => {
       const res = await fetchCareerOptions(career);
       setOptionData(res?.data);
+      setFilteredData(res?.data);
       !res.data.length ? setShowComingSoon(true) : setShowComingSoon(false);
       return res?.data;
     },
     enabled: !!career,
   });
 
-  const totalPages = Math.ceil(optionData.length / CARDS_PER_PAGE);
+  const totalPages = Math.ceil(filteredData.length / CARDS_PER_PAGE);
   const startIndex = (currentPage - 1) * CARDS_PER_PAGE;
   const endIndex = startIndex + CARDS_PER_PAGE;
-  const cardsToDisplay = optionData.slice(startIndex, endIndex);
+  const cardsToDisplay = filteredData.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handlePageChange = (page: number) => {
     window.scrollTo({
@@ -62,18 +69,46 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
     setCurrentPage(page);
   };
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
+
+    if (term) {
+      const filtered = optionData.filter(
+        (card) =>
+          card.choice.toLowerCase().includes(term) ||
+          card.description.toLowerCase().includes(term)
+      );
+      setFilteredData(filtered);
+      setCurrentPage(1); // Reset to first page on search
+    } else {
+      setFilteredData(optionData); // Reset to all cards
+    }
+  };
+
   return (
     <>
       {!isLoading && showComingSoon ? (
         <ComingSoonPage />
       ) : (
         <div className="flex flex-col justify-start bg-gradient-to-b from-white to-blue-100 min-h-screen w-full">
-          <div className="flex justify-center">
-            <h1 className="text-3xl font-semibold text-gray-900 mb-8">
+          <div className="flex justify-center mt-6">
+            <h1 className="text-3xl font-semibold text-gray-900 mb-4">
               Explore Your Options
             </h1>
           </div>
-          <div className="w-3/4 max-w-4xl space-y-6 ml-10 mb-4">
+
+          <div className="w-3/4 max-w-4xl mx-auto mb-6">
+            <input
+              type="text"
+              placeholder="Search for options..."
+              value={searchTerm}
+              onChange={handleSearch}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          <div className="w-[90%] mx-auto sm:w-3/4 max-w-4xl space-y-6 sm:ml-10 sm:mb-4">
             {isLoading ? (
               <div className="flex flex-col space-y-4">
                 {[...Array(3)].map((_, index) => (
@@ -120,48 +155,51 @@ const OptionsDetails: React.FC<OptionsDetailsProps> = ({ career }) => {
               ))
             )}
           </div>
-          <div className="flex justify-center mb-4">
-            <Pagination>
-              <PaginationContent>
-                <PaginationPrevious
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  aria-disabled={currentPage === 1}
-                  className={
-                    currentPage === 1
-                      ? "pointer-events-none opacity-50"
-                      : "cursor-pointer"
-                  }
-                >
-                  Previous
-                </PaginationPrevious>
 
-                <PaginationItem>
-                  {Array.from({ length: totalPages }, (_, index) => (
-                    <PaginationLink
-                      key={index}
-                      isActive={currentPage === index + 1}
-                      onClick={() => handlePageChange(index + 1)}
-                      className="cursor-pointer"
-                    >
-                      {index + 1}
-                    </PaginationLink>
-                  ))}
-                </PaginationItem>
+          {filteredData.length > 0 && (
+            <div className="flex justify-center mb-4">
+              <Pagination>
+                <PaginationContent>
+                  <PaginationPrevious
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    aria-disabled={currentPage === 1}
+                    className={
+                      currentPage === 1
+                        ? "pointer-events-none opacity-50"
+                        : "cursor-pointer"
+                    }
+                  >
+                    Previous
+                  </PaginationPrevious>
 
-                <PaginationNext
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  aria-disabled={currentPage === totalPages}
-                  className={
-                    currentPage === totalPages
-                      ? "pointer-events-none opacity-50"
-                      : "cursor-pointer"
-                  }
-                >
-                  Next
-                </PaginationNext>
-              </PaginationContent>
-            </Pagination>
-          </div>
+                  <PaginationItem>
+                    {Array.from({ length: totalPages }, (_, index) => (
+                      <PaginationLink
+                        key={index}
+                        isActive={currentPage === index + 1}
+                        onClick={() => handlePageChange(index + 1)}
+                        className="cursor-pointer"
+                      >
+                        {index + 1}
+                      </PaginationLink>
+                    ))}
+                  </PaginationItem>
+
+                  <PaginationNext
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    aria-disabled={currentPage === totalPages}
+                    className={
+                      currentPage === totalPages
+                        ? "pointer-events-none opacity-50"
+                        : "cursor-pointer"
+                    }
+                  >
+                    Next
+                  </PaginationNext>
+                </PaginationContent>
+              </Pagination>
+            </div>
+          )}
         </div>
       )}
     </>

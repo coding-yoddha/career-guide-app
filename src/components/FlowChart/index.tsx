@@ -63,14 +63,24 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
             options, these steps will guide you toward making informed decisions
             about your future.
           </p>
-          <div className="bg-gradient-to-r from-blue-400 to-blue-600 text-white py-6 px-6 mt-6 mb-6 rounded-lg shadow-lg mx-auto w-full sm:w-[75%]">
+          <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-4 px-4 mt-4 mb-4 rounded-lg shadow-lg mx-auto w-full sm:w-[75%]">
             <div className="text-center">
-              <p className="text-xl font-semibold leading-relaxed">
-                <span className="inline-block animate-bounce text-blue-600 text-3xl mx-2">
+              <p className="text-lg sm:text-xl font-semibold leading-snug">
+                <span className="inline-block animate-bounce text-pink-300 text-2xl sm:text-3xl mx-2">
                   ⬇️
                 </span>
-                Tap on any box in the chart below to uncover insights for your
-                next step.
+                Tap on the boxes to explore your next step.
+              </p>
+              <p className="mt-2 text-sm sm:text-lg font-medium text-white">
+                <span className="font-extrabold text-yellow-300">Note:</span>{" "}
+                Starting step (
+                <span className="font-extrabold">{`X Grade`}</span>) and your
+                career (<span className="font-extrabold">{careerOption}</span>)
+                are fixed.{" "}
+                <span className="font-extrabold underline decoration-dotted decoration-yellow-300">
+                  Tap other boxes
+                </span>{" "}
+                to explore!
               </p>
             </div>
           </div>
@@ -103,17 +113,6 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
             )}
           </div>
         </div>
-      </div>
-
-      <div className="px-4 sm:px-6 mt-4 mb-4">
-        <span className="block font-semibold text-gray-600 bg-gray-100 border-l-4 border-yellow-400 p-4 rounded-md">
-          Since you're looking for career options after 10th and pursue your
-          dream profession, some steps in your journey (like
-          <span className="font-extrabold">{` X Grade`}</span>,
-          <span className="font-extrabold">{careerOption}</span>) are starting
-          and ending points that don't need clicking. The chart focuses on
-          helping you explore the paths that lead to your dream career.
-        </span>
       </div>
     </div>
   );
