@@ -126,7 +126,7 @@ const DataDisplay: React.FC = () => {
             {education && education === BTech ? (
               <>
                 <section className="mb-12">
-                  <h2 className="text-lg sm:text-xl font-bold text-gray-700 mb-4 p-2 sm:p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
+                  <h2 className="text-3xl font-bold text-gray-700 mb-6 p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
                     The Engineers Behind Everyday Innovations
                   </h2>
                   <div className="space-y-4 pt-8">
@@ -151,7 +151,7 @@ const DataDisplay: React.FC = () => {
             {data?.courses && data?.courses?.length ? (
               <>
                 <section className="mb-12">
-                  <h2 className="text-lg sm:text-xl font-bold text-gray-700 mb-4 p-2 sm:p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
+                  <h2 className="text-3xl font-bold text-gray-700 mb-6 p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
                     Courses
                   </h2>
 
@@ -198,7 +198,7 @@ const DataDisplay: React.FC = () => {
             {data?.resources && data?.resources?.length ? (
               <>
                 <section className="mb-6">
-                  <h2 className="text-lg sm:text-xl font-bold text-gray-700 mb-4 p-2 sm:p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
+                  <h2 className="text-3xl font-bold text-gray-700 mb-6 p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
                     Resources
                   </h2>
                   <div className="space-y-4 pt-8 ">
@@ -240,7 +240,7 @@ const DataDisplay: React.FC = () => {
             {data?.commonResources && data?.commonResources?.length ? (
               <>
                 <section className="mb-6">
-                  <div className="flex flex-row items-center justify-start text-lg sm:text-xl font-bold text-gray-700 mb-4 p-2 sm:p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
+                  <div className="flex flex-row items-center justify-start text-3xl font-bold text-gray-700 mb-6 p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
                     <h2>Common Resources</h2>
                     <TooltipProvider>
                       <Tooltip>
@@ -297,7 +297,7 @@ const DataDisplay: React.FC = () => {
             {/* Other Options Section */}
             {data?.otherOptions && data?.otherOptions?.length && (
               <section className="mb-12">
-                <h2 className="text-lg sm:text-xl font-bold text-gray-700 mb-4 p-2 sm:p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
+                <h2 className="text-3xl font-bold text-gray-700 mb-6 p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
                   Explore Alternative Pathways to Your Dream Career
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md">
