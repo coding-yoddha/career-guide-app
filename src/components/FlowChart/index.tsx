@@ -64,7 +64,7 @@ const Flow: React.FC<CareerOption> = ({ careerOption, career }) => {
             options, these steps will guide you toward making informed decisions
             about your future.
           </p>
-          <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-4 px-4 mt-4 mb-4 rounded-lg shadow-lg mx-auto w-full sm:w-[25%]">
+          <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-4 px-4 mt-4 mb-4 rounded-lg shadow-lg mx-auto w-full sm:w-[75%]">
             <div className="text-center">
               <p className="text-lg sm:text-xl font-semibold leading-snug">
                 <span className="inline-block animate-bounce text-pink-300 text-2xl sm:text-3xl mx-2">
@@ -72,17 +72,19 @@ const Flow: React.FC<CareerOption> = ({ careerOption, career }) => {
                 </span>
                 Tap on the boxes to explore your next step.
               </p>
+              <p className="mt-2 text-sm sm:text-lg font-medium text-white">
+                <span className="font-extrabold text-yellow-300">Note:</span>{" "}
+                Starting step (
+                <span className="font-extrabold">{`X Grade`}</span>) and your
+                career (<span className="font-extrabold">{careerOption}</span>)
+                are fixed.{" "}
+                <span className="font-extrabold underline decoration-dotted decoration-yellow-300">
+                  Tap other boxes
+                </span>{" "}
+                to explore!
+              </p>
             </div>
           </div>
-          <p className="mt-2 text-sm sm:text-lg font-medium text-black">
-            <span className="font-extrabold">Note:</span> Starting step (
-            <span className="font-extrabold">{`X Grade`}</span>) and your career
-            (<span className="font-extrabold">{careerOption}</span>) are fixed.{" "}
-            <span className="font-extrabold underline decoration-dotted decoration-purple-500">
-              Tap other boxes
-            </span>{" "}
-            to explore!
-          </p>
         </div>
       </div>
 
