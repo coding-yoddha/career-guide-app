@@ -103,7 +103,8 @@ const Home: React.FC = async () => {
             <DataCard careerOption={careerOption} key={careerOption._id} />
           ))}
         </div>
-        <div className="mt-4 mb-2 mx-auto w-[90%] bg-gradient-to-r from-[#6a4c93] to-[#9b69e9] p-6 rounded-lg shadow-lg">
+
+        <div className="mt-4 mb-2 mx-auto w-[90%] sm:w-[40%] bg-gradient-to-r from-[#6a4c93] to-[#9b69e9] p-6 rounded-lg shadow-lg">
           <h3 className="text-lg font-semibold text-white mb-4 text-center">
             We’re Always Improving!
           </h3>
@@ -121,6 +122,14 @@ const Home: React.FC = async () => {
               Drop your thoughts ❤️
             </a>
           </div>
+        </div>
+
+        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md mb-6 w-full sm:w-auto text-center mt-4">
+          <p className="text-sm sm:text-base">
+            <strong>Note:</strong> For the best experience, we recommend using
+            this app in
+            <span className="font-semibold"> desktop mode</span>.
+          </p>
         </div>
       </div>
     </div>
