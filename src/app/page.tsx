@@ -92,12 +92,23 @@ const Home: React.FC = async () => {
           </div>
         </section>
 
-        <NotificationCard
-          title={" Exciting Updates Coming Soon!"}
-          description={
-            "We currently have few career choices available as of now. Stay tuned for more options that will be added in the future!"
-          }
-        />
+        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md mb-6 w-full sm:w-auto text-center mt-4">
+          <p className="text-sm sm:text-base">
+            <strong>Note:</strong> For the best experience, we recommend using
+            this app in
+            <span className="font-semibold"> desktop mode</span>.
+          </p>
+        </div>
+
+        <div className="self-start">
+          <NotificationCard
+            title={" Exciting Updates Coming Soon!"}
+            description={
+              "We currently have few career choices available as of now. Stay tuned for more options that will be added in the future!"
+            }
+          />
+        </div>
+
         <div className="bg-zinc-50 rounded border-2 border-gray-500 pt-4 pb-4 flex flex-wrap gap-4 mb-3 justify-around mt-6 w-full">
           {data?.map((careerOption: CareerOption) => (
             <DataCard careerOption={careerOption} key={careerOption._id} />
@@ -122,14 +133,6 @@ const Home: React.FC = async () => {
               Drop your thoughts ❤️
             </a>
           </div>
-        </div>
-
-        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md mb-6 w-full sm:w-auto text-center mt-4">
-          <p className="text-sm sm:text-base">
-            <strong>Note:</strong> For the best experience, we recommend using
-            this app in
-            <span className="font-semibold"> desktop mode</span>.
-          </p>
         </div>
       </div>
     </div>
