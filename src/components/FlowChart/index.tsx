@@ -15,9 +15,10 @@ interface FlowData {
 
 interface CareerOption {
   careerOption: string | null;
+  career: string | null;
 }
 
-const Flow: React.FC<CareerOption> = ({ careerOption }) => {
+const Flow: React.FC<CareerOption> = ({ careerOption, career }) => {
   const [flowData, setFlowData] = useState<FlowData>({
     nodes: [],
     edges: [],
@@ -28,7 +29,7 @@ const Flow: React.FC<CareerOption> = ({ careerOption }) => {
   const { isError, isLoading } = useQuery({
     queryKey: ["getFlowData"],
     queryFn: async () => {
-      const res = await fetchFlowData("X - State/SSC", careerOption);
+      const res = await fetchFlowData("X Grade", careerOption, career);
       setFlowData(res?.data);
       return res?.data;
     },
