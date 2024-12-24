@@ -28,6 +28,7 @@ export async function GET(req) {
         const courseIds = roleToeduMapData[0].courseIds;
         data.realLifeExamples = roleToeduMapData[0].reallifeexample;
         data.otherOptions = roleToeduMapData[0].otherOptions;
+        data.resources = roleToeduMapData[0].resources;
         const courseData = await CourseDetail.find({ id: { $in: courseIds } }); 
         for (var course of courseData) {
           data.courses.push({
