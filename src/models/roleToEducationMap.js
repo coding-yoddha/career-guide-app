@@ -14,6 +14,25 @@ const roleToEducationSchema = new Schema(
       type: [String],
       required: true,
     },
+    resources: [
+      {
+        name: {
+          type: String,
+        },
+        description: {
+          type: String,
+        },
+        url: {
+          type: String,
+        },
+      },
+    ],
+    otherOptions: {
+      type: [String],
+    },
+    reallifeexample: {
+      type: [String],
+    },
   },
   { timestamps: true }
 );
