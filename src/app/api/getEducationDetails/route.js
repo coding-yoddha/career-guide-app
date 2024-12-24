@@ -16,7 +16,6 @@ export async function GET(req) {
     if (eduData.length > 0) {
       data.name = eduData[0].name;
       data.description = eduData[0].description;
-      data.otherOptions = eduData[0].otherOptions;
       data.commonResources = eduData[0].resources;
       const roleToeduMapData = await RoleToEducationMap.find({
         role,
@@ -27,6 +26,8 @@ export async function GET(req) {
       data.realLifeExamples = [];
       if (roleToeduMapData.length > 0) {
         const courseIds = roleToeduMapData[0].courseIds;
+        data.realLifeExamples = roleToeduMapData[0].reallifeexample;
+        data.otherOptions = roleToeduMapData[0].otherOptions;
         const courseData = await CourseDetail.find({ id: { $in: courseIds } }); 
         for (var course of courseData) {
           data.courses.push({
@@ -35,7 +36,6 @@ export async function GET(req) {
             exams: course.exams,
           });
           data.resources = data.resources.concat(course.resources);
-          data.realLifeExamples = data.realLifeExamples.concat(course.reallifeexample);
         }
       }
     }
