@@ -33,6 +33,9 @@ const roleToEducationSchema = new Schema(
     reallifeexample: {
       type: [String],
     },
+    essentialSteps: {
+      type: [String],
+    },
   },
   { timestamps: true }
 );
