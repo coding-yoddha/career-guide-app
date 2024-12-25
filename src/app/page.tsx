@@ -5,7 +5,6 @@ import mainIcon from "../public/mainLogo.svg";
 import learning from "../public/learning.jpg";
 import { getCareers } from "../actions/careerOverviewAction";
 
-// Define the type for the career option object
 interface CareerOption {
   _id: string;
   name: string;
@@ -38,7 +37,7 @@ const Home: React.FC = async () => {
       <div className="flex flex-col  items-center">
         <div className="flex flex-col md:flex-row md:justify-start items-center w-full space-y-4 md:space-y-0 md:space-x-4">
           <div className="w-64 h-40 sm:w-72 sm:h-48 md:w-96 md:h-64 lg:w-[650px] lg:h-[400px]">
-            <Image alt="Logo" src={mainIcon} />
+            <Image alt="Logo" src={mainIcon} priority />
           </div>
           <div className="text-center px-4 md:text-left">
             <h1
@@ -87,7 +86,10 @@ const Home: React.FC = async () => {
             <Image
               src={learning}
               alt="learning"
-              className="w-full md:w-[25rem] max-w-xs"
+              width={400} // Set a default width
+              height={400} // Set a default height
+              className="w-full md:w-[25rem] max-w-xs" // Tailwind classes for responsive styling
+              priority
             />
           </div>
         </section>
