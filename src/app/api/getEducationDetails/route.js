@@ -8,7 +8,16 @@ import RoleToEducationMap from "../../../models/roleToEducationMap";
 export async function GET(req) {
   try {
     await connectToDB();
-    const data = {};
+    const data = {
+      name: '',
+      description: '',
+      essentialSteps: [],
+      realLifeExamples: [],
+      resources: [],
+      courses: [],
+      otherOptions: [],
+      commonResources: []
+    };
     const { searchParams } = new URL(req.url);
     const education = searchParams.get("education");
     const role = searchParams.get("role");
@@ -21,10 +30,8 @@ export async function GET(req) {
         role,
         education,
       });
-      data.courses = [];
-      data.resources = [];
-      data.realLifeExamples = [];
       if (roleToeduMapData.length > 0) {
+        data.essentialSteps = roleToeduMapData[0].essentialSteps;
         const courseIds = roleToeduMapData[0].courseIds;
         data.realLifeExamples = roleToeduMapData[0].reallifeexample;
         data.otherOptions = roleToeduMapData[0].otherOptions;
