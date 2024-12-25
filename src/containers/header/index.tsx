@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -51,7 +52,7 @@ const Header = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-6">
           {["Home", "About", "Contact"].map((item) => (
-            <a
+            <Link
               key={item}
               href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
               className={`font-semibold px-4 py-2 rounded transition-colors duration-300 ${
@@ -61,7 +62,7 @@ const Header = () => {
               }`}
             >
               {item}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -90,7 +91,7 @@ const Header = () => {
             { name: "About", icon: faUser, path: "/about" },
             { name: "Contact", icon: faEnvelope, path: "/contact" },
           ].map((item) => (
-            <a
+            <Link
               key={item.name}
               href={item.path}
               className={`flex items-center gap-4 py-3 px-4 rounded-lg text-lg font-semibold transition-all duration-300 ${
@@ -100,7 +101,6 @@ const Header = () => {
               }`}
               onClick={toggleSidebar}
             >
-              {/* FontAwesome Icon */}
               <span className="text-2xl text-[#407bfe]">
                 <FontAwesomeIcon
                   icon={item.icon}
@@ -109,10 +109,8 @@ const Header = () => {
                   }`}
                 />
               </span>
-
-              {/* Navigation Text */}
               {item.name}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>

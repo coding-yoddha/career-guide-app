@@ -15,7 +15,6 @@ import {
 import { fetchCareerOptions } from "@/utils/apiHelpers";
 import { Skeleton } from "../ui/skeleton";
 import ComingSoonPage from "../ComingSoon";
-import Loader from "../Loader";
 
 // Defining a type for card data
 interface Card {
