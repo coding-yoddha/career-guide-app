@@ -44,6 +44,7 @@ interface EducationDetails {
   resources: Resource[];
   commonResources: CommonResource[];
   realLifeExamples: string[];
+  essentialSteps: string[]; // Add this key
 }
 
 interface Description {
@@ -102,7 +103,7 @@ const DataDisplay: React.FC = () => {
 
   return (
     <>
-      {data && Object.keys(data).length !== 0 ? (
+      {data && Object.keys(data).length !== 0 && data.description !== "" ? (
         <div className="min-h-screen font-medium bg-gray-100 flex flex-col items-center py-12 px-4">
           {/* Title */}
           <h1 className="text-4xl font-extrabold text-gray-600 text-center mb-8">
@@ -127,7 +128,7 @@ const DataDisplay: React.FC = () => {
               <>
                 <section className="mb-12">
                   <h2 className="text-3xl font-bold text-gray-700 mb-6 p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
-                    The Engineers Behind Everyday Innovations
+                    Behind the Magic: Professions That Power Your Daily Life
                   </h2>
                   <div className="space-y-4 pt-8">
                     {data?.realLifeExamples?.map((realLifeExample, index) => (
@@ -201,6 +202,36 @@ const DataDisplay: React.FC = () => {
                       </div>
                     ))}
                   </div>
+                </section>
+                <div className="border-t border-gray-300 my-8"></div>
+              </>
+            ) : null}
+
+            {data?.essentialSteps && data?.essentialSteps?.length ? (
+              <>
+                <section className="mb-12">
+                  <h2 className="text-3xl font-bold text-gray-700 mb-6 p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
+                    Next Key Steps to Achieve Your Dream Career
+                  </h2>
+                  <p className="text-lg text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-md">
+                    Follow these essential steps to stay on track and reach your
+                    goals:
+                  </p>
+                  <ul className="space-y-4 mt-3 pt-8">
+                    {data.essentialSteps.map((step, index) => (
+                      <li
+                        key={index}
+                        className="flex items-center bg-white shadow-md rounded-lg p-4 hover:bg-gray-50 transition"
+                      >
+                        <div className="flex-shrink-0 w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-lg font-bold">
+                          {index + 1}
+                        </div>
+                        <p className="ml-4 text-gray-800 text-base leading-relaxed">
+                          {step}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
                 </section>
                 <div className="border-t border-gray-300 my-8"></div>
               </>
