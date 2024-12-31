@@ -175,25 +175,29 @@ const DataDisplay: React.FC = () => {
                           customClass="border-2 border-gray-800"
                         />
 
-                        {!(
-                          course.exams.length === 1 && course.exams === "."
-                        ) && (
-                          <div className="mt-4">
-                            <h4 className="text-lg font-semibold text-gray-700 mb-2">
-                              Exams:
-                            </h4>
-                            <div className="flex flex-wrap gap-3">
-                              {course.exams.split(",").map((exam, index) => (
-                                <span
-                                  key={index}
-                                  className="inline-block px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
-                                >
-                                  {exam.trim()}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        )}
+                        {course?.exams
+                          ? !(
+                              course.exams.length === 1 && course.exams === "."
+                            ) && (
+                              <div className="mt-4">
+                                <h4 className="text-lg font-semibold text-gray-700 mb-2">
+                                  Exams:
+                                </h4>
+                                <div className="flex flex-wrap gap-3">
+                                  {course?.exams
+                                    .split(",")
+                                    .map((exam, index) => (
+                                      <span
+                                        key={index}
+                                        className="inline-block px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
+                                      >
+                                        {exam.trim()}
+                                      </span>
+                                    ))}
+                                </div>
+                              </div>
+                            )
+                          : null}
                       </div>
                     ))}
                   </div>
@@ -245,6 +249,7 @@ const DataDisplay: React.FC = () => {
             ) : null}
 
             {/* Common Resources */}
+
             {data?.commonResources && data?.commonResources?.length ? (
               <>
                 <section className="mb-6">
@@ -303,7 +308,7 @@ const DataDisplay: React.FC = () => {
             ) : null}
 
             {/* Other Options Section */}
-            {data?.otherOptions && data?.otherOptions?.length && (
+            {data?.otherOptions && data?.otherOptions?.length ? (
               <section className="mb-12">
                 <h2 className="text-3xl font-bold text-gray-700 mb-6 p-4 rounded-lg bg-gradient-to-r from-white to-blue-50 border border-gray-200 shadow-md">
                   Explore Alternative Pathways to Your Dream Career
@@ -333,7 +338,7 @@ const DataDisplay: React.FC = () => {
                   ))}
                 </ul>
               </section>
-            )}
+            ) : null}
           </div>
         </div>
       ) : (
